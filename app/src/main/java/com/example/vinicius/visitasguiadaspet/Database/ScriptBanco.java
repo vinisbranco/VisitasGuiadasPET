@@ -10,7 +10,7 @@ public class ScriptBanco {
 
         StringBuilder sqlBuilder =  new StringBuilder();
         sqlBuilder.append("CREATE TABLE LOCAIS ( ");
-        sqlBuilder.append("d         CHAR (5)      PRIMARY KEY ");
+        sqlBuilder.append("id         CHAR (5)      PRIMARY KEY ");
         sqlBuilder.append("UNIQUE ");
         sqlBuilder.append("NOT NULL, ");
         sqlBuilder.append("nSala      VARCHAR (10)  NOT NULL, ");
