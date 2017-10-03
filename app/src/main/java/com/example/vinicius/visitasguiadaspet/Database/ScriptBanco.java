@@ -9,6 +9,7 @@ public class ScriptBanco {
     public static String getCreateLocal(){
 
         StringBuilder sqlBuilder =  new StringBuilder();
+        sqlBuilder.setLength(500);
         sqlBuilder.append("CREATE TABLE LOCAIS ( ");
         sqlBuilder.append("id         CHAR (5)      PRIMARY KEY ");
         sqlBuilder.append("UNIQUE ");
@@ -31,6 +32,8 @@ public class ScriptBanco {
         sqlBuilder.append("HorentradaTar TIME, ");
         sqlBuilder.append("HorsaidaTar   TIME ");
         sqlBuilder.append("); ");
-        return getCreateLocal().toString();
+
+
+        return sqlBuilder.toString();
     }
 }
