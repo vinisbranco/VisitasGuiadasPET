@@ -17,7 +17,7 @@
 
             <TableRow>
                 <TextView
-                    android:text="PET-Informática"
+                    android:id="@+id/txtNome"
                     android:textSize="30dp"
                     android:textStyle="bold"
                     android:textAlignment="center"
