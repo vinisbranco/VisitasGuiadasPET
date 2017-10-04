@@ -4,8 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ActivityConteudo extends AppCompatActivity {
 
@@ -19,11 +22,20 @@ public class ActivityConteudo extends AppCompatActivity {
 
         txtNome = (TextView) findViewById(R.id.txtNome);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Entidades").child("1").child("nome");
+        mDatabase = FirebaseDatabase.getInstance().getReference("Entidades");
 
-        final String nome = mDatabase.push().getKey();
+        mDatabase.child("nome").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String nome = dataSnapshot.getValue(String.class);
+                txtNome.setText(nome);
+            }
 
-        txtNome.setText(nome);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
