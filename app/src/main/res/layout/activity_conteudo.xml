@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/borda"
+            android:shrinkColumns="0">
+
+            <TableRow>
+                <TextView
+                    android:text="PET-Informática"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_marginBottom="10dp"
+                    android:textAppearance="@style/CodeFont"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Prédio: 32"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:textAppearance="@style/CodeFont"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Sala: 701"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:textAppearance="@style/CodeFont"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="Horários: 14:00 - 17:30"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:textAppearance="@style/CodeFont"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="@string/txt_exemplo_descricao"
+                    android:textSize="20dp"
+                    android:textAppearance="@style/CodeFont"/>
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
+
+</LinearLayout>
