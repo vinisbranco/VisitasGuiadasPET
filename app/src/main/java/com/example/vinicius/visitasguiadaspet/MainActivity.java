@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.example.vinicius.visitasguiadaspet.Database.Banco;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioLocais;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
             dlg.setMessage("Conexão criada com sucesso! ");
             dlg.setNeutralButton("OK", null);
             dlg.show();
+
+
 
         }catch(SQLException ex){
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
