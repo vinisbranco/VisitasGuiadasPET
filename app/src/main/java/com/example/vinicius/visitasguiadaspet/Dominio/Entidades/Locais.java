@@ -5,7 +5,7 @@ package com.example.vinicius.visitasguiadaspet.Dominio.Entidades;
  */
 
 public class Locais {
-    private char id;
+    private int id;
     private String nSala;
     private String nome;
     private int numContato;
@@ -13,7 +13,7 @@ public class Locais {
     private int tempVisit;
     private String descricao;
 
-    public Locais(char id, String nSala, String nome, int numContato , String email, int tempVisit, String descricao){
+    public Locais(int id, String nSala, String nome, int numContato , String email, int tempVisit, String descricao){
         this.id = id;
         this.nSala = nSala;
         this.nome = nome;
@@ -23,10 +23,10 @@ public class Locais {
         this.descricao = descricao;
     }
 
-    public char getId() {
+    public int getId() {
         return id;
     }
-    public void setId(char id) {
+    public void setId(int id) {
         this.id = id;
     }
 

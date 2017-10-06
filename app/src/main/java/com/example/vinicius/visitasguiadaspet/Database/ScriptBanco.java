@@ -11,7 +11,7 @@ public class ScriptBanco {
         StringBuilder sqlBuilder =  new StringBuilder();
         sqlBuilder.setLength(500);
         sqlBuilder.append("CREATE TABLE LOCAIS ( ");
-        sqlBuilder.append("id         CHAR (5)      PRIMARY KEY ");
+        sqlBuilder.append("id         NUMBER (5)      PRIMARY KEY ");
         sqlBuilder.append("UNIQUE ");
         sqlBuilder.append("NOT NULL, ");
         sqlBuilder.append("nSala      VARCHAR (10)  NOT NULL, ");
@@ -21,9 +21,17 @@ public class ScriptBanco {
         sqlBuilder.append("tempVist   NUMBER (3)    NOT NULL, ");
         sqlBuilder.append("descricao  VARCHAR (500) ");
         sqlBuilder.append("); ");
+
+
+        return sqlBuilder.toString();
+    }
+    public static String getCreateHorarios(){
+
+        StringBuilder sqlBuilder =  new StringBuilder();
+        sqlBuilder.setLength(500);
         sqlBuilder.append("CREATE TABLE HORARIOS ( ");
-        sqlBuilder.append("id            CHAR (5)     REFERENCES LOCAIS (id), ");
-        sqlBuilder.append("idHor         CHAR (5)     PRIMARY KEY ");
+        sqlBuilder.append("id            NUMBER (5)     REFERENCES LOCAIS (id), ");
+        sqlBuilder.append("idHor         NUMBER (5)     PRIMARY KEY ");
         sqlBuilder.append("NOT NULL ");
         sqlBuilder.append("UNIQUE, ");
         sqlBuilder.append("DiaSem        VARCHAR (10), ");
@@ -33,7 +41,8 @@ public class ScriptBanco {
         sqlBuilder.append("HorsaidaTar   TIME ");
         sqlBuilder.append("); ");
 
-
         return sqlBuilder.toString();
+
     }
-}
+
+    }

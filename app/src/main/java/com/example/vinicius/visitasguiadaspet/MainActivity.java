@@ -11,16 +11,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.vinicius.visitasguiadaspet.Database.Banco;
+import com.example.vinicius.visitasguiadaspet.Database.Banco2;
+import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioHorarios;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioLocais;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
     private Banco banco;
+    private Banco2 banco2;
     private SQLiteDatabase conn;
+    private SQLiteDatabase conn2;
     private ListView lstLocais;
     private ArrayAdapter<String> adpLocais;
     private RepositorioLocais repositorioLocais;
+    private RepositorioHorarios repositorioHorarios;
 
 
     @Override
@@ -32,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             banco = new Banco(this);
+            banco2 = new Banco2(this);
             conn = banco.getWritableDatabase();
+            conn2 = banco2.getWritableDatabase();
 
             repositorioLocais = new RepositorioLocais(conn);
+            repositorioHorarios = new RepositorioHorarios(conn2);
             adpLocais = repositorioLocais.buscaLocais(this);
 
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
