@@ -121,14 +121,54 @@ public class MainActivity extends AppCompatActivity {
         horarios4 = new Horarios(4, "Quinta", null, null, "14:00:00","17:30:00", locais);
         horarios5 = new Horarios(5, "Sexta", null, null, "14:00:00","17:30:00", locais);
 
-        locais = new Locais(4, "602", "LABIO - Laboratório de Bioinformática, modelagem e simulação de Biossitemas", null, "osmar.norberto@pucrs.br", 15, "O Laboratório de Bioinformática, Modelagem e Simulação de Biossistemas (LaBio), criado em 2002, é liderado pelo professor Osmar Norberto de Souza. A estrutura, que abriga o Grupo de Biofísica Molecular Computacional, Modelagem e Simulação de Biossistemas, promove investigações interdisciplinares que permeiam as principais áreas de pesquisas biomédicas realizadas na PUCRS e por parceiros da Instituição, dentro e fora do Brasil. As atividades são conduzidas a partir de quatro linhas de pesquisa: Bioinformática e Computação Bioinspirada; Biologia Molecular da Interação Droga/Alvo; Genética, Genômica e Bioinformática; Pesquisa e Avaliação de Alvos Moleculares.");
+        locais = new Locais(5, "625", "GRV - Laboratório de Realidade Virtual", "5133203558", "marcio.pinho@pucrs.br", 15, "The Virtual Reality Group perform researches in the areas of virtual reality, augmented reality, image processing. We are located on the 6th floor of the building 32 PUCRS Porto Alegre Campus.");
         horarios = new Horarios(1, "Segunda", null, null, "14:00:00","17:30:00", locais);
         horarios2 = new Horarios(2, "Terça", null, null, "14:00:00","17:30:00", locais);
         horarios3 = new Horarios(3, "Quarta", null, null, "14:00:00","17:30:00", locais);
         horarios4 = new Horarios(4, "Quinta", null, null, "14:00:00","17:30:00", locais);
         horarios5 = new Horarios(5, "Sexta", null, null, "14:00:00","17:30:00", locais);
 
+        locais = new Locais(6, "626", "LSA - Laboratório de Sistemas Autônomos", null, "mobile.robot.pucrs@gmail.com", 10, "LSA is devoted mainly to environmental, humanitarian, educational, and industrial applications for the benefit of mankind. The laboratory combines researchers from different areas (embedded systems, computer vision, AI) to design innovative solutions, bridging the existing robotics research gap between hardware and software.");
+        horarios = new Horarios(1, "Segunda", null, null, "14:00:00","17:30:00", locais);
+        horarios2 = new Horarios(2, "Terça", null, null, "14:00:00","17:30:00", locais);
+        horarios3 = new Horarios(3, "Quarta", null, null, "14:00:00","17:30:00", locais);
+        horarios4 = new Horarios(4, "Quinta", null, null, "14:00:00","17:30:00", locais);
+        horarios5 = new Horarios(5, "Sexta", null, null, "14:00:00","17:30:00", locais);
 
+        locais = new Locais(7, "627", "SMART - Grupo de Pesquisa ", null , "smart.pucrs@gmail.com", 15, "The SMART research group produces internationally leading research in Artificial Intelligence, especially in the areas of multi-agent systems and domain-specific knowledge representation using formal ontologies. Overall, the group aims to employ the techniques it develops in the production of innovative technology for the social good and sustainability.");
+        horarios = new Horarios(1, "Segunda", null, null, "14:00:00","17:30:00", locais);
+        horarios2 = new Horarios(2, "Terça", null, null, "14:00:00","17:30:00", locais);
+        horarios3 = new Horarios(3, "Quarta", null, null, "14:00:00","17:30:00", locais);
+        horarios4 = new Horarios(4, "Quinta", null, null, "14:00:00","17:30:00", locais);
+        horarios5 = new Horarios(5, "Sexta", null, null, "14:00:00","17:30:00", locais);
+
+        locais = new Locais(8, "628", "GPIN - Laboratório de Pesquisa em Inteligência de Negócio", null, "duncan@pucrs.br", 15, "o Grupo de Pesquisa em Inteligência de Negócio, GPIN, busca pesquisar temas relacionados à Inteligência de Processos de Negócio, bem como disseminar os resultados de suas pesquisas através da formação na graduação e na pós-graduação. \n Entre os principais temas de pesquisa estão: sistemas de descoberta de conhecimento, mineração de dados, data warehousing, bancos de dados ativos e temporais e automação de processos de negócio.");
+        horarios = new Horarios(1, "Segunda", null, null, "14:00:00","17:30:00", locais);
+        horarios2 = new Horarios(2, "Terça", null, null, "14:00:00","17:30:00", locais);
+        horarios3 = new Horarios(3, "Quarta", null, null, "14:00:00","17:30:00", locais);
+        horarios4 = new Horarios(4, "Quinta", null, null, "14:00:00","17:30:00", locais);
+        horarios5 = new Horarios(5, "Sexta", null, null, "14:00:00","17:30:00", locais);
+
+        locais = new Locais(9, "630", "PLN - Laboratório de Processamento de Linguagem Natural", "33203611", "renata.vieira@pucrs.br", 15, "O grupo desenvolve trabalhos que se destacam em duas linhas: formação de pessoas e produção científica. Na formação, destacamos a qualidade da formação dos egressos e a fixação dos mesmos em IES (ex.: USP, UCS), órgãos públicos (ex.: ABIN) e empresas privadas (ex.: MICROSOFT, GODIGITAL). Na vertente da geração de conhecimento, o grupo vem desenvolvendo projetos que o projetam como integrador de instituições nacionais (PUCRS, UFRGS, UFSC, UNICAMP, UFSCAR e USP). Os laços de cooperação internacional são com Portugal, Espanha, França e Uruguay. O grupo se envolve com atividades da comunidade científica da área de Processamento de Linguagem Natural, através da participação em sociedades científicas nacionais como a SBC (Sociedade Brasileira de Computação) e internacionais como a ACL (The Association for Computational Linguistics).");
+        horarios = new Horarios(1, "Segunda", null, null, "14:00:00","17:30:00", locais);
+        horarios2 = new Horarios(2, "Terça", null, null, "14:00:00","17:30:00", locais);
+        horarios3 = new Horarios(3, "Quarta", null, null, "14:00:00","17:30:00", locais);
+        horarios4 = new Horarios(4, "Quinta", null, null, "14:00:00","17:30:00", locais);
+        horarios5 = new Horarios(5, "Sexta", null, null, "14:00:00","17:30:00", locais);
+
+        locais = new Locais(10, "653", "LSHV - Laboratório de Simulação de Humanos Virtuais", "5133203611", "soraia.musse@pucrs.br", 15, "Created in 2007, VHLab develops research on Computer Graphics, Crowd Simulation, Computer Vision, Facial Animation, Virtual Human Simulation, among others.");
+        horarios = new Horarios(1, "Segunda", null, null, "14:00:00","17:30:00", locais);
+        horarios2 = new Horarios(2, "Terça", null, null, "14:00:00","17:30:00", locais);
+        horarios3 = new Horarios(3, "Quarta", null, null, "14:00:00","17:30:00", locais);
+        horarios4 = new Horarios(4, "Quinta", null, null, "14:00:00","17:30:00", locais);
+        horarios5 = new Horarios(5, "Sexta", null, null, "14:00:00","17:30:00", locais);
+
+        locais = new Locais(11, "654", "DaVint - Laboratório de Realidade Virtual", "5133203558", "marcio.pinho@pucrs.br", 15, "The Virtual Reality Group perform researches in the areas of virtual reality, augmented reality, image processing. We are located on the 6th floor of the building 32 PUCRS Porto Alegre Campus.");
+        horarios = new Horarios(1, "Segunda", null, null, "14:00:00","17:30:00", locais);
+        horarios2 = new Horarios(2, "Terça", null, null, "14:00:00","17:30:00", locais);
+        horarios3 = new Horarios(3, "Quarta", null, null, "14:00:00","17:30:00", locais);
+        horarios4 = new Horarios(4, "Quinta", null, null, "14:00:00","17:30:00", locais);
+        horarios5 = new Horarios(5, "Sexta", null, null, "14:00:00","17:30:00", locais);
 
     }
 }
