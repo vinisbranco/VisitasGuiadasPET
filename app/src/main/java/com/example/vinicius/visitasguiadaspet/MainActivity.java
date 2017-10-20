@@ -14,7 +14,6 @@ import com.example.vinicius.visitasguiadaspet.Database.Banco;
 import com.example.vinicius.visitasguiadaspet.Database.Banco2;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioHorarios;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioLocais;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
