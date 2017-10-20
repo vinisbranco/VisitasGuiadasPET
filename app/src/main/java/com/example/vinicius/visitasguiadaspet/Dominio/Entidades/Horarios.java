@@ -13,6 +13,9 @@ public class Horarios{
     private String HorSaiTar;
     private Locais locais;
 
+    public Horarios(){
+
+    }
     public Horarios(int idhor, String DiaSem, String HorEntrManh, String HorSaiManh, String HorEntrTar, String HorSaiTar, Locais locais){
         this.idhor = idhor;
         this.DiaSem = DiaSem;
@@ -77,5 +80,10 @@ public class Horarios{
 
     public void setLocais(Locais locais) {
         this.locais = locais;
+    }
+
+    @Override
+    public String toString() {
+        return DiaSem + " : " + HorEntrManh + " - " + HorSaiManh + "\n" + HorEntrTar + " - " + HorSaiTar;
     }
 }

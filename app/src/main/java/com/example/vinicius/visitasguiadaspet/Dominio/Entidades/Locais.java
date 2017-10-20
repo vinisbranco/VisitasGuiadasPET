@@ -13,6 +13,10 @@ public class Locais {
     private int tempVisit;
     private String descricao;
 
+    public Locais(){
+
+    }
+
     public Locais(int id, String nSala, String nome, String numContato , String email, int tempVisit, String descricao){
         this.id = id;
         this.nSala = nSala;
@@ -70,5 +74,10 @@ public class Locais {
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public String toString() {
+        return nSala + " - " + nome + "\n" + numContato + " - " + email + "\n" + tempVisit + "\n" + descricao;
     }
 }

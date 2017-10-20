@@ -34,9 +34,9 @@ public class RepositorioTags {
 
     }
 
-    public ArrayAdapter<String> buscaTags(Context context){
+    public ArrayAdapter<Tags> buscaTags(Context context){
 
-        ArrayAdapter<String> adpTags = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1);
+        ArrayAdapter<Tags> adpTags = new ArrayAdapter<Tags>(context, android.R.layout.simple_list_item_1);
 
         Cursor cursor = conn.query("TAGS", null, null, null, null, null, null);
 
@@ -44,7 +44,8 @@ public class RepositorioTags {
 
         if(cursor.getCount() > 0){
             do {
-                String tag = cursor.getString(3);
+                Tags tag = new Tags();
+                tag.setTags(cursor.getString(3));
                 adpTags.add(tag);
             }while(cursor.moveToNext());
 

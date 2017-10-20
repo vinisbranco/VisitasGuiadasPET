@@ -10,6 +10,9 @@ public class Tags {
     private String Tags;
     private Locais locais;
 
+    public Tags(){
+
+    }
 
     public Tags(int idTags, String Tags, Locais locais){
         this.idTags = idTags;
@@ -39,5 +42,10 @@ public class Tags {
 
     public void setLocais(Locais locais) {
         this.locais = locais;
+    }
+
+    @Override
+    public String toString() {
+        return Tags;
     }
 }
