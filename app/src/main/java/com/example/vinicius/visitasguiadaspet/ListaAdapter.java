@@ -41,7 +41,7 @@ public class ListaAdapter extends ArrayAdapter<Projeto> {
 
         titulo.setText("Projeto: "+elementos.get(position).getNome());
         sala.setText("Sala: "+elementos.get(position).getSala());
-        tempVisita.setText("Tempo médio de visita: "+elementos.get(position).getTempVisita());
+        tempVisita.setText("Horários: "+elementos.get(position).getTempVisita());
         imagem.setImageResource(elementos.get(position).getImage());
 
         rowView.setOnClickListener(new View.OnClickListener() {
