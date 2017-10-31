@@ -49,8 +49,15 @@ public class RepositorioLocais {
         if(cursor.getCount() > 0){
             do {
 
+
                 Locais locais = new Locais();
+                locais.setId(cursor.getInt(1));
                 locais.setnSala(cursor.getString(2));
+                locais.setNome(cursor.getString(3));
+                locais.setNumContato(cursor.getString(4));
+                locais.setEmail(cursor.getString(5));
+                locais.setTempVisit(cursor.getInt(6));
+                locais.setDescricao(cursor.getString(7));
 
                 adpLocais.add(locais);
             }while(cursor.moveToNext());

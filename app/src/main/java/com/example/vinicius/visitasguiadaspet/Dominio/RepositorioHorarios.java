@@ -17,6 +17,7 @@ import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Locais;
 public class RepositorioHorarios {
     private SQLiteDatabase conn;
     private ListView lstLocais;
+    private RepositorioLocais replocais;
 
 
     public RepositorioHorarios(SQLiteDatabase conn){
@@ -48,9 +49,25 @@ public class RepositorioHorarios {
 
         if(cursor.getCount() > 0){
             do {
+                ArrayAdapter<Locais> adpLocais = new ArrayAdapter<Locais>(context, android.R.layout.simple_list_item_1);
+                adpLocais = replocais.buscaLocais(context);
+                Locais locais = new Locais();
+                for(int i=0; i <= adpLocais.getCount(); i++) {
+                    if (adpLocais.getItem(i).getId() == cursor.getInt(1)) {
+                        locais = adpLocais.getItem(i);
+                        break;
+                    }
+                }
 
                 Horarios horarios = new Horarios();
+                horarios.setLocais(locais);
                 horarios.setIdhor(cursor.getInt(2));
+                horarios.setDiaSem(cursor.getString(3));
+                horarios.setHorEntrManh(cursor.getString(4));
+                horarios.setHorSaiManh(cursor.getString(5));
+                horarios.setHorEntrTar(cursor.getString(6));
+                horarios.setHorSaiTar(cursor.getString(7));
+
                 adpHorarios.add(horarios);
             }while(cursor.moveToNext());
 
