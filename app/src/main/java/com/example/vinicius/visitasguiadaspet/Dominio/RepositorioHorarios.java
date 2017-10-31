@@ -38,9 +38,9 @@ public class RepositorioHorarios {
 
     }
 
-    public ArrayAdapter<String> buscaHorarios(Context context){
+    public ArrayAdapter<Horarios> buscaHorarios(Context context){
 
-        ArrayAdapter<String> adpHorarios = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1);
+        ArrayAdapter<Horarios> adpHorarios = new ArrayAdapter<Horarios>(context, android.R.layout.simple_list_item_1);
 
         Cursor cursor = conn.query("HORARIOS", null, null, null, null, null, null);
 
@@ -48,8 +48,10 @@ public class RepositorioHorarios {
 
         if(cursor.getCount() > 0){
             do {
-                String numsala = cursor.getString(2);
-                adpHorarios.add(numsala);
+
+                Horarios horarios = new Horarios();
+                horarios.setIdhor(cursor.getInt(2));
+                adpHorarios.add(horarios);
             }while(cursor.moveToNext());
 
 

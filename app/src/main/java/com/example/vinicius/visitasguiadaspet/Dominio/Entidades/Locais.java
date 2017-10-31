@@ -8,12 +8,16 @@ public class Locais {
     private int id;
     private String nSala;
     private String nome;
-    private int numContato;
+    private String numContato;
     private String email;
     private int tempVisit;
     private String descricao;
 
-    public Locais(int id, String nSala, String nome, int numContato , String email, int tempVisit, String descricao){
+    public Locais(){
+
+    }
+
+    public Locais(int id, String nSala, String nome, String numContato , String email, int tempVisit, String descricao){
         this.id = id;
         this.nSala = nSala;
         this.nome = nome;
@@ -44,10 +48,10 @@ public class Locais {
         this.nome = nome;
     }
 
-    public int getNumContato() {
+    public String getNumContato() {
         return numContato;
     }
-    public void setNumContato(int numContato) {
+    public void setNumContato(String numContato) {
         this.numContato = numContato;
     }
 
@@ -70,5 +74,10 @@ public class Locais {
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    @Override
+    public String toString() {
+        return nSala + " - " + nome + "\n" + numContato + " - " + email + "\n" + tempVisit + "\n" + descricao;
     }
 }

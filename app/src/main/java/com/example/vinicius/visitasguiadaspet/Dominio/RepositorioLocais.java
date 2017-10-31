@@ -38,9 +38,9 @@ public class RepositorioLocais {
 
     }
 
-    public ArrayAdapter<String> buscaLocais(Context context){
+    public ArrayAdapter<Locais> buscaLocais(Context context){
 
-        ArrayAdapter<String> adpLocais = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1);
+        ArrayAdapter<Locais> adpLocais = new ArrayAdapter<Locais>(context, android.R.layout.simple_list_item_1);
 
         Cursor cursor = conn.query("LOCAIS", null, null, null, null, null, null);
 
@@ -48,8 +48,11 @@ public class RepositorioLocais {
 
         if(cursor.getCount() > 0){
             do {
-                String numsala = cursor.getString(2);
-                adpLocais.add(numsala);
+
+                Locais locais = new Locais();
+                locais.setnSala(cursor.getString(2));
+
+                adpLocais.add(locais);
             }while(cursor.moveToNext());
 
 
