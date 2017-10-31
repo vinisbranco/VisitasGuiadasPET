@@ -11,9 +11,10 @@ public class Projeto {
     private final String email;
     private final String tempVisita;
     private final String descricao;
+    private final String tags;
     private final int image;
 
-    public Projeto(String nome, String sala, String numContato, String email, String tempVisita, String descricao, int image){
+    public Projeto(String nome, String sala, String numContato, String email, String tempVisita, String descricao, int image, String tags){
         this.nome = nome;
         this.sala = sala;
         this.numContato = numContato;
@@ -21,6 +22,7 @@ public class Projeto {
         this.tempVisita = tempVisita;
         this.descricao = descricao;
         this.image = image;
+        this.tags = tags;
     }
 
 
@@ -51,4 +53,6 @@ public class Projeto {
     public String getTempVisita() {
         return tempVisita;
     }
+
+    public String getTags() { return tags; }
 }

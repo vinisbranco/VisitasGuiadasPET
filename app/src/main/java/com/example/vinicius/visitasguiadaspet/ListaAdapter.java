@@ -37,6 +37,7 @@ public class ListaAdapter extends ArrayAdapter<Projeto> {
         TextView sala = (TextView) rowView.findViewById(R.id.txt_sala);
         TextView tempVisita = (TextView) rowView.findViewById(R.id.txt_temp_visita);
         ImageView imagem = (ImageView) rowView.findViewById(R.id.img_identificacao);
+        ImageButton deletar = rowView.findViewById(R.id.btn_deletar);
 
         titulo.setText("Projeto: "+elementos.get(position).getNome());
         sala.setText("Sala: "+elementos.get(position).getSala());
@@ -54,6 +55,14 @@ public class ListaAdapter extends ArrayAdapter<Projeto> {
                 it.putExtra("descricao", elementos.get(position).getDescricao());
                 it.putExtra("tempVisita", elementos.get(position).getTempVisita());
                 contexto.startActivity(it);
+            }
+        });
+
+        deletar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                elementos.remove(position);
+                notifyDataSetChanged();
             }
         });
 

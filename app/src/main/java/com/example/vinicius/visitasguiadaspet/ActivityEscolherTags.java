@@ -33,6 +33,36 @@ public class ActivityEscolherTags extends AppCompatActivity{
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(ActivityEscolherTags.this, ActivityListaProjetoPersonalizada.class);
+
+                String tags = "";
+
+                robotica = (CheckBox) findViewById(R.id.item1);
+                compGrafica = (CheckBox) findViewById(R.id.item2);
+                virtualizacao = (CheckBox) findViewById(R.id.item3);
+                sisAutonomos = (CheckBox) findViewById(R.id.item4);
+                sisEmbarcados = (CheckBox) findViewById(R.id.item5);
+                intArtificial = (CheckBox) findViewById(R.id.item6);
+
+                if(robotica.isChecked()){
+                    tags = tags + "," + robotica.getText();
+                }
+                if(compGrafica.isChecked()){
+                    tags = tags + "," + compGrafica.getText();
+                }
+                if(virtualizacao.isChecked()){
+                    tags = tags + "," + virtualizacao.getText();
+                }
+                if(sisAutonomos.isChecked()){
+                    tags = tags + "," + sisAutonomos.getText();
+                }
+                if(sisEmbarcados.isChecked()){
+                    tags = tags + "," + sisEmbarcados.getText();
+                }
+                if(intArtificial.isChecked()){
+                    tags = tags + "," + intArtificial.getText();
+                }
+
+                intent.putExtra("tags", tags);
                 startActivity(intent);
             }
         });
@@ -40,43 +70,6 @@ public class ActivityEscolherTags extends AppCompatActivity{
 
 
     }
-    /*
-    @Override
-    public void onClick(View view){
-        txtResultado = (TextView) findViewById(R.id.txt_resultado);
-        String tags = "Assuntos escolhidos: ";
-
-        robotica = (CheckBox) findViewById(R.id.item1);
-        compGrafica = (CheckBox) findViewById(R.id.item2);
-        virtualizacao = (CheckBox) findViewById(R.id.item3);
-        sisAutonomos = (CheckBox) findViewById(R.id.item4);
-        sisEmbarcados = (CheckBox) findViewById(R.id.item5);
-        intArtificial = (CheckBox) findViewById(R.id.item6);
-
-        if(robotica.isChecked()){
-             tags = tags + "\n" + robotica.getText();
-        }
-        if(compGrafica.isChecked()){
-            tags = tags + "\n" + compGrafica.getText();
-        }
-        if(virtualizacao.isChecked()){
-            tags = tags + "\n" + virtualizacao.getText();
-        }
-        if(sisAutonomos.isChecked()){
-            tags = tags + "\n" + sisAutonomos.getText();
-        }
-        if(sisEmbarcados.isChecked()){
-            tags = tags + "\n" + sisEmbarcados.getText();
-        }
-        if(intArtificial.isChecked()){
-            tags = tags + "\n" + intArtificial.getText();
-        }
-
-        txtResultado.setText(tags);
-
-
-    }
-    */
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
