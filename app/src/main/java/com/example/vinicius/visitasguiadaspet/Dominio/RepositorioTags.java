@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Locais;
 import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Tags;
 
 /**
@@ -17,6 +18,7 @@ public class RepositorioTags {
 
     private SQLiteDatabase conn;
     private ListView lstTags;
+    private RepositorioLocais replocais;
 
 
     public RepositorioTags(SQLiteDatabase conn){
@@ -44,8 +46,21 @@ public class RepositorioTags {
 
         if(cursor.getCount() > 0){
             do {
+                ArrayAdapter<Locais> adpLocais = new ArrayAdapter<Locais>(context, android.R.layout.simple_list_item_1);
+                adpLocais = replocais.buscaLocais(context);
+                Locais locais = new Locais();
+                for(int i=0; i <= adpLocais.getCount(); i++) {
+                    if (adpLocais.getItem(i).getId() == cursor.getInt(1)) {
+                        locais = adpLocais.getItem(i);
+                        break;
+                    }
+                }
                 Tags tag = new Tags();
+                tag.setLocais(locais);
+                tag.setIdTags(cursor.getInt(2));
                 tag.setTags(cursor.getString(3));
+
+
                 adpTags.add(tag);
             }while(cursor.moveToNext());
 
