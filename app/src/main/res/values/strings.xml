@@ -1,8 +1,52 @@
 <resources>
     <string name="app_name">PET-Visitas</string>
-    <string name="txt_exemplo_descricao">Descrição: O PET (Programa de Educação Tutorial)
-        é um programa realizado pelo MEC que consiste em três pilares principais:
-        ensino, extensão e pesquisa e desenvolvimento. O grupo é formado por 12 bolsistas
-        que atuam nas três áreas, realizando tarefas como organização de palestras,
-        desenvolvimento de artigos e minicursos e auxiliam em projetos de extensão.</string>
+    <string name="txt_tags">Escolha os assuntos que deseja conhecer:</string>
+    <string name="txt_robotica">Robótica</string>
+    <string name="txt_sistemas_autonomos">Sistemas Autônomos</string>
+    <string name="txt_inteligencia_artificial">Inteligência Artificial</string>
+    <string name="txt_sistemas_embarcados">Sistemas Embarcados</string>
+    <string name="txt_computacao_grafica">Computação Gráfica</string>
+    <string name="txt_virtualizacao">Virtualização</string>
+    <string name="btn_gerar_roteiro">Gerar Roteiro</string>
+    <string name="btn_voltar">Voltar</string>
+    <string name="title_activity_principal">PrincipalActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="title">PET Informática</string>
+    <!--Parte 1 Conteudo-->
+    <string name="title_1">O que é?</string>
+    <string name="conteudo_1">Os estudantes são responsáveis pela organização de
+        atividades de integração destinadas ao público interno da universidade:
+        estudantes, professores e outros servidores.</string>
+    <!--FIM-->
+    <!--Parte 2 Conteudo-->
+    <string name="title_2">Atividades realizadas</string>
+    <string name="conteudo_2_1">Dentre as atividades realizadas, estão aquelas
+        que se repetem todos semestres, como a recepção aos calouros, a seleção
+        para novos membros do grupo, o ciclo de palestras PET Talks e o minicurso
+        sobre Linux para calouros.</string>
+    <string name="conteudo_2_2">Recepção aos calouros: ao início de cada semestre,
+        os membros do grupo se dividem e passam em todas as salas com estudantes
+        calouros para fazer uma breve apresentação sobre o grupo PET - Informática,
+        assim como para divulgar informações sobre a próxima seleção de bolsistas.</string>
+    <string name="conteudo_2_3">Seleção PET: todo semestre, é realizado um processo
+        para selecionar novos membros para o grupo PET - Informática e completar o
+        grupo de 12 estudantes bolsistas. A quantidade de vagas varia de acordo com
+        a disponibilidade.</string>
+    <string name="conteudo_2_4">PET Talks: é um ciclo de palestras realizado todo
+        semestre com professores e profissionais convidados para debater temas de
+        interesse na área de informática. As palestras são destinadas aos estudantes
+        de cursos da Faculdade de Informática, porém toda a comunidade é bem vinda.</string>
+    <!--FIM-->
+    <!--Parte 3 Conteudo-->
+    <string name="title_3">PET Talks</string>
+    <string name="conteudo_3">Semestralmente, é realizado o ciclo de palestras entitulado
+        PET Talks. As palestras abordam assuntos relacionados à área de informática e são
+        destinados a estudantes da FACIN, porém toda a comunidade é bem vinda. As palestras
+        têm duração de 30 minutos cada e ocorrem uma vez por semana, nos auditórios do prédio 32.
+        Para ter mais informações a respeito das próximas palestras, consulte a nossa agenda.</string>
 </resources>

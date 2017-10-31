@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/gerar_lista_principal"
+            android:icon="@drawable/ic_gerar_lista_menu_principal"
+            android:title="Gerar Lista" />
+        <item
+            android:id="@+id/lista_principal"
+            android:icon="@drawable/ic_lista"
+            android:title="Lista de projetos" />
+        <item
+            android:id="@+id/localizacao"
+            android:icon="@drawable/ic_localizacao"
+            android:title="Localização" />
+    </group>
+
+</menu>

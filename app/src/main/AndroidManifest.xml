@@ -3,13 +3,21 @@
     package="com.example.vinicius.visitasguiadaspet">
 
     <application
+        android:debuggable="true"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_pet"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/pet"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ActivityEscolherTags" />
+        <activity android:name=".ActivityListaProjetoPersonalizada" />
+        <activity android:name=".MainActivity"/>
+        <activity
+            android:name=".ActivityPrincipal"
+            android:label="@string/title_activity_principal"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".SplachActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,6 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.vinicius.visitasguiadaspet.ActivityConteudo" />
+        <activity android:name=".ActivityListaProjetoCompleta"/>
     </application>
+
 
 </manifest>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_identificacao"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_pet"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="7dp"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/img_identificacao"
+        android:layout_toLeftOf="@+id/btn_deletar"
+        android:layout_marginRight="20dp"
+        android:padding="3dp">
+
+        <TextView
+            android:id="@+id/txt_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="PET_INFORMATiCA"
+            />
+
+        <TextView
+            android:id="@+id/txt_sala"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="teste"
+            ></TextView>
+
+        <TextView
+            android:id="@+id/txt_temp_visita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="teste"
+            ></TextView>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_deletar"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        android:src="@drawable/ic_delete"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="27dp"
+        android:layout_marginLeft="7dp"/>
+
+</RelativeLayout>

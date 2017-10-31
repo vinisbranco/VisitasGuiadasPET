@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Confirmar"
+        android:id="@+id/btn_menu_confirmar"
+        android:icon="@drawable/ic_confirmar_lista"
+        app:showAsAction="always"/>
+    <item android:title="Deletar"
+        android:id="@+id/btn_deletar"
+        android:icon="@drawable/ic_cancelar_lista"
+        app:showAsAction="always"/>
+</menu>
