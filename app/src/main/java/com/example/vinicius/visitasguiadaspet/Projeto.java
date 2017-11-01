@@ -5,7 +5,7 @@ package com.example.vinicius.visitasguiadaspet;
  */
 
 public class Projeto {
-    private final String nome;
+    private String nome;
     private final String sala;
     private final String numContato;
     private final String email;
