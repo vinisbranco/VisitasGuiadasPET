@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Locais;
+import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Tags;
+
+import java.util.HashMap;
 
 /**
  * Created by vinicius on 28/09/17.
@@ -38,9 +41,9 @@ public class RepositorioLocais {
 
     }
 
-    public ArrayAdapter<Locais> buscaLocais(Context context){
-
-        ArrayAdapter<Locais> adpLocais = new ArrayAdapter<Locais>(context, android.R.layout.simple_list_item_1);
+    public HashMap<Integer, Locais> buscaLocais(Context context){
+        HashMap<Integer, Locais> maplocais = new HashMap<>();
+        //ArrayAdapter<Locais> adpLocais = new ArrayAdapter<Locais>(context, android.R.layout.simple_list_item_1);
 
         Cursor cursor = conn.query("LOCAIS", null, null, null, null, null, null);
 
@@ -59,11 +62,12 @@ public class RepositorioLocais {
                 locais.setTempVisit(cursor.getInt(6));
                 locais.setDescricao(cursor.getString(7));
 
-                adpLocais.add(locais);
+                maplocais.put(cursor.getInt(1), locais);
+
             }while(cursor.moveToNext());
 
 
         }
-        return adpLocais;
+        return maplocais;
     }
 }
