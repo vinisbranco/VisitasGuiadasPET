@@ -64,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
             repositorioLocais = new RepositorioLocais(conn);
             repositorioHorarios = new RepositorioHorarios(conn2);
-            repositorioTags = new RepositorioTags(conn3);
+            repositorioTags = new RepositorioTags(conn3);/*
             adpLocais = repositorioLocais.buscaLocais(this);
             adpHorarios = repositorioHorarios.buscaHorarios(this);
-            adpTags = repositorioTags.buscaTags(this);
+            adpTags = repositorioTags.buscaTags(this);*/
 
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
             dlg.setMessage("Conexão criada com sucesso! ");

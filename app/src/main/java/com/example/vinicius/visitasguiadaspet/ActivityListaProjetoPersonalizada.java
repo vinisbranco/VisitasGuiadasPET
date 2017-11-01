@@ -1,6 +1,7 @@
 package com.example.vinicius.visitasguiadaspet;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -110,7 +111,14 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.btn_menu_confirmar:
-                Toast.makeText(this, "Lista confirmada com sucesso!", Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(Intent.ACTION_SEND);
+                it.setData(Uri.parse("mailto:"));
+                String[] to = {"vinicius_ct@outlook.com.br"};
+                it.putExtra(Intent.EXTRA_EMAIL, to);
+                it.putExtra(Intent.EXTRA_SUBJECT, "Teste");
+                it.putExtra(Intent.EXTRA_TEXT, "teste");
+                it.setType("message/rfc822");
+                startActivity(it);
                 break;
             case R.id.btn_deletar:
                 finish();

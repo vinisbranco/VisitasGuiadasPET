@@ -10,6 +10,8 @@ import android.widget.ListView;
 import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Locais;
 import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Tags;
 
+import java.util.HashMap;
+
 /**
  * Created by vinicius on 11/10/17.
  */
@@ -36,9 +38,9 @@ public class RepositorioTags {
 
     }
 
-    public ArrayAdapter<Tags> buscaTags(Context context){
-
-        ArrayAdapter<Tags> adpTags = new ArrayAdapter<Tags>(context, android.R.layout.simple_list_item_1);
+    public HashMap<Integer, Tags> buscaTags(Context context){
+        HashMap<Integer, Tags> map = new HashMap<>();
+        //ArrayAdapter<Tags> adpTags = new ArrayAdapter<Tags>(context, android.R.layout.simple_list_item_1);
 
         Cursor cursor = conn.query("TAGS", null, null, null, null, null, null);
 
@@ -46,26 +48,24 @@ public class RepositorioTags {
 
         if(cursor.getCount() > 0){
             do {
-                ArrayAdapter<Locais> adpLocais = new ArrayAdapter<Locais>(context, android.R.layout.simple_list_item_1);
+
+                HashMap<Integer, Locais> adpLocais = new HashMap<>();
                 adpLocais = replocais.buscaLocais(context);
                 Locais locais = new Locais();
-                for(int i=0; i <= adpLocais.getCount(); i++) {
-                    if (adpLocais.getItem(i).getId() == cursor.getInt(1)) {
-                        locais = adpLocais.getItem(i);
-                        break;
-                    }
-                }
+
+                locais =  adpLocais.get(cursor.getInt(1));
+                
                 Tags tag = new Tags();
                 tag.setLocais(locais);
                 tag.setIdTags(cursor.getInt(2));
                 tag.setTags(cursor.getString(3));
 
+                map.put(cursor.getInt(2),tag);
 
-                adpTags.add(tag);
             }while(cursor.moveToNext());
 
 
         }
-        return adpTags;
+        return map;
     }
 }

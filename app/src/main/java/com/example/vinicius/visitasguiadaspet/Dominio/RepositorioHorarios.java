@@ -9,6 +9,9 @@ import android.widget.ListView;
 
 import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Horarios;
 import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Locais;
+import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Tags;
+
+import java.util.HashMap;
 
 /**
  * Created by vinicius on 06/10/17.
@@ -39,9 +42,9 @@ public class RepositorioHorarios {
 
     }
 
-    public ArrayAdapter<Horarios> buscaHorarios(Context context){
-
-        ArrayAdapter<Horarios> adpHorarios = new ArrayAdapter<Horarios>(context, android.R.layout.simple_list_item_1);
+    public HashMap<Integer, Horarios> buscaHorarios(Context context){
+        HashMap<Integer, Horarios> map = new HashMap<>();
+        //ArrayAdapter<Horarios> adpHorarios = new ArrayAdapter<Horarios>(context, android.R.layout.simple_list_item_1);
 
         Cursor cursor = conn.query("HORARIOS", null, null, null, null, null, null);
 
@@ -49,15 +52,11 @@ public class RepositorioHorarios {
 
         if(cursor.getCount() > 0){
             do {
-                ArrayAdapter<Locais> adpLocais = new ArrayAdapter<Locais>(context, android.R.layout.simple_list_item_1);
+                HashMap<Integer, Locais> adpLocais = new HashMap<>();
                 adpLocais = replocais.buscaLocais(context);
                 Locais locais = new Locais();
-                for(int i=0; i <= adpLocais.getCount(); i++) {
-                    if (adpLocais.getItem(i).getId() == cursor.getInt(1)) {
-                        locais = adpLocais.getItem(i);
-                        break;
-                    }
-                }
+
+                locais =  adpLocais.get(cursor.getInt(1));
 
                 Horarios horarios = new Horarios();
                 horarios.setLocais(locais);
@@ -68,11 +67,12 @@ public class RepositorioHorarios {
                 horarios.setHorEntrTar(cursor.getString(6));
                 horarios.setHorSaiTar(cursor.getString(7));
 
-                adpHorarios.add(horarios);
+                map.put(cursor.getInt(2), horarios);
+
             }while(cursor.moveToNext());
 
 
         }
-        return adpHorarios;
+        return map;
     }
 }
