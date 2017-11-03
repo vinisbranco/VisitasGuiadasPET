@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ActivityEscolherTags" />
-        <activity android:name=".ActivityListaProjetoPersonalizada" />
+        <activity android:name=".ActivityListaProjetoPersonalizada" >
+
+        </activity>
         <activity android:name=".MainActivity"/>
         <activity
             android:name=".ActivityPrincipal"

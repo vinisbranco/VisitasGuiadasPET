@@ -41,7 +41,7 @@ public class RepositorioLocais {
 
     }
 
-    public HashMap<Integer, Locais> buscaLocais(Context context){
+    public HashMap<Integer, Locais> buscaLocais(){
         HashMap<Integer, Locais> maplocais = new HashMap<>();
         //ArrayAdapter<Locais> adpLocais = new ArrayAdapter<Locais>(context, android.R.layout.simple_list_item_1);
 

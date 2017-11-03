@@ -53,7 +53,7 @@ public class RepositorioHorarios {
         if(cursor.getCount() > 0){
             do {
                 HashMap<Integer, Locais> adpLocais = new HashMap<>();
-                adpLocais = replocais.buscaLocais(context);
+                adpLocais = replocais.buscaLocais();
                 Locais locais = new Locais();
 
                 locais =  adpLocais.get(cursor.getInt(1));

@@ -61,6 +61,7 @@ public class ActivityEscolherTags extends AppCompatActivity{
                 if(intArtificial.isChecked()){
                     tags = tags + "," + intArtificial.getText();
                 }
+                tags = tags + ",";
 
                 intent.putExtra("tags", tags);
                 startActivity(intent);

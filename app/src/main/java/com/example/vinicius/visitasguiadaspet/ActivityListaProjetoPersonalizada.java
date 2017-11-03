@@ -1,7 +1,10 @@
 package com.example.vinicius.visitasguiadaspet;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,31 +13,50 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.vinicius.visitasguiadaspet.Database.Banco;
+import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Locais;
+import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioLocais;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
 
 public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
+
+    final ArrayList<Projeto> projetos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_conteudo);
+        /*
+            Banco bd = new Banco(this);
+            SQLiteDatabase conn = bd.getWritableDatabase();
+            RepositorioLocais repositorioLocais = new RepositorioLocais(conn);
 
+            TextView tv = (TextView) findViewById(R.id.teste);
+            HashMap<Integer, Locais> listaHash = repositorioLocais.buscaLocais();
+            Collection<Locais> locais = listaHash.values();
+            String locais2 = locais.toString();
+            tv.setText(locais2);
+        */
         ListView lista = (ListView) findViewById(R.id.lista);
         ArrayList<Projeto> aux = listaDeProjetos();
-        ArrayList<Projeto> projetos = new ArrayList<Projeto>();
         for(int i=0; i<aux.size(); i++){
             String[] tagsElementos = aux.get(i).getTags().split(",");
-            String[] tagsIntent = getIntent().getStringExtra("tags").split(",");
+            String tagsIntent = getIntent().getStringExtra("tags");
             for(int j=0; j<tagsElementos.length; j++){
-                for(int k=0; k<tagsIntent.length; k++){
-                    if(tagsElementos[j].equals(tagsIntent[k])){
-                        if(!projetos.contains(aux.get(i))){
-                            projetos.add(aux.get(i));
-                        }
-                    }
+                if(tagsIntent.contains(tagsElementos[j])){
+                    projetos.add(aux.get(i));
+                    break;
                 }
             }
         }
@@ -76,7 +98,7 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
                 ,R.mipmap.ic_gpin, "Sistemas Embarcados");
         projetos.add(projeto);
         projeto = new Projeto("LABIO","602","40028922","labio@pucrs.br","14:00-17:30","Os estudantes são responsáveis pela organização de atividades de integração destinadas ao público interno da universidade: estudantes, professores e outros servidores."
-                ,R.mipmap.ic_icon_default, "Robótica,Virtualização");
+                ,R.mipmap.ic_icon_default, "Robótica,Sistemas Autônomos");
         projetos.add(projeto);
         projeto = new Projeto("GRV","625","99998888","grv@pucrs.br","14:00-17:30","O objetivo do Curso de Bacharelado em Engenharia de Software é formar profissionais com sólida competência e conhecimento profundo de arquitetura de software, tecnologias e processos de desenvolvimento, de maneira a poder produzir software robusto e com qualidade, de maneira sistemática e eficiente, desde aplicativos simples até sistemas críticos de alta complexidade."
                 ,R.mipmap.ic_icon_default, "Computação Gráfica");
@@ -100,6 +122,7 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
         return projetos;
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -111,18 +134,70 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case R.id.btn_menu_confirmar:
+                //Gerar a Mensagem automática com base nas informações adquiridas até aqui;
                 Intent it = new Intent(Intent.ACTION_SEND);
                 it.setData(Uri.parse("mailto:"));
                 String[] to = {"vinicius_ct@outlook.com.br"};
                 it.putExtra(Intent.EXTRA_EMAIL, to);
-                it.putExtra(Intent.EXTRA_SUBJECT, "Teste");
-                it.putExtra(Intent.EXTRA_TEXT, "teste");
+                it.putExtra(Intent.EXTRA_SUBJECT, "Nova visita agendada");
+
+                String[] aux = getIntent().getExtras().toString().split(",");
+                String tags = "";
+                for (int i=1; i<aux.length-1; i++){
+                    if(i==1){
+                        tags = aux[i];
+                    }else{
+                        tags = tags + ", "+aux[i];
+                    }
+                }
+                tags = tags + ".";
+
+                //Data e hora;
+                Date data = new Date();
+                SimpleDateFormat dateFormat = new SimpleDateFormat();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(data);
+                Date data_atual = cal.getTime();
+                String data_completa = dateFormat.format(data_atual);
+                int hora = 14;
+                int min = 10;
+
+
+                String projeto = "";
+                for(int i=0; i<projetos.size(); i++){
+
+                    String nome = projetos.get(i).getNome();
+                    String sala = projetos.get(i).getSala();
+                    projeto = projeto + "\n"+(i+1)+"ª Projeto: "+nome
+                            + "\nSala: "+sala+"\n"
+                            + "Horário: "+hora+":"+min;
+                    min = min + 15;
+                    if(min>=60){
+                        hora++;
+                        min = min - 60;
+                    }
+                    projeto = projeto + " - "+hora+":"+min+"\n";
+                }
+
+
+                String msg ="->Informações:\n"
+                        + "-Visitante:\n\n"
+                        + "Nome: "+"Vinicius C. Teixeira\n"
+                        + "Idade: "+"18\n"
+                        + "Empresa: "+"TECNOPUCRS\n"
+                        + "Interese: "+tags
+                        + "\n\n-Visita: \n\n"
+                        + "Data: "+data_completa.substring(0,data_completa.indexOf(" "))+"\n"
+                        + projeto;
+
+
+                it.putExtra(Intent.EXTRA_TEXT, msg);
                 it.setType("message/rfc822");
                 startActivity(it);
                 break;
             case R.id.btn_deletar:
                 finish();
-                Toast.makeText(this, "Lista concelada com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Lista cancelada com sucesso!", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
@@ -130,9 +205,6 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
         return true;
     }
 
-    public String[] gerarArrayTags(String tags){
-        String[] vetorTags = tags.split(" ");
-        return vetorTags;
-    }
+
 
 }
