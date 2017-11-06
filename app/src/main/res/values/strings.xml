@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">PET-Visitas</string>
+    <!--Tags-->
     <string name="txt_tags">Escolha os assuntos que deseja conhecer:</string>
     <string name="txt_robotica">Robótica</string>
     <string name="txt_sistemas_autonomos">Sistemas Autônomos</string>
@@ -9,8 +10,14 @@
     <string name="txt_virtualizacao">Virtualização</string>
     <string name="btn_gerar_roteiro">Gerar Roteiro</string>
     <string name="btn_voltar">Voltar</string>
+    <!--FIM-->
+    <!--Textos menu lateral-->
+    <string name="txt_subtitulo">Visitas guiadas da PUCRS</string>
+    <string name="txt_marcar_visita">Marcar visita</string>
+    <string name="txt_lista_projetos">Lista de projetos</string>
+    <string name="txt_localizacao">Localização</string>
+    <!--FIM-->
     <string name="title_activity_principal">PrincipalActivity</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

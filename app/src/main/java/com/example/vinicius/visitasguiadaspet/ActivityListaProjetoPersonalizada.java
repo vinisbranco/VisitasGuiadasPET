@@ -141,9 +141,9 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
                 it.putExtra(Intent.EXTRA_EMAIL, to);
                 it.putExtra(Intent.EXTRA_SUBJECT, "Nova visita agendada");
 
-                String[] aux = getIntent().getExtras().toString().split(",");
+                String[] aux = getIntent().getExtras().get("tags").toString().split(",");
                 String tags = "";
-                for (int i=1; i<aux.length-1; i++){
+                for (int i=2; i<aux.length-1; i++){
                     if(i==1){
                         tags = aux[i];
                     }else{
@@ -152,15 +152,8 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
                 }
                 tags = tags + ".";
 
-                //Data e hora;
-                Date data = new Date();
-                SimpleDateFormat dateFormat = new SimpleDateFormat();
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(data);
-                Date data_atual = cal.getTime();
-                String data_completa = dateFormat.format(data_atual);
-                int hora = 14;
-                int min = 10;
+                int hora = Integer.getInteger(getIntent().getExtras().get("horario").toString().split(":")[0]);
+                int min = Integer.getInteger(getIntent().getExtras().get("horario").toString().split(":")[1]);
 
 
                 String projeto = "";
@@ -182,15 +175,8 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
 
                 String msg ="->Informações:\n"
                         + "-Visitante:\n\n"
-                        + "Nome: "+"Vinicius C. Teixeira\n"
-                        + "Idade: "+"18\n"
-                        + "Empresa: "+"TECNOPUCRS\n"
-                        + "Interese: "+tags
-                        + "\n\n-Visita: \n\n"
-                        + "Data: "+data_completa.substring(0,data_completa.indexOf(" "))+"\n"
+                        + getIntent().getExtras().get("info_usuario")+"\n\n"
                         + projeto;
-
-
                 it.putExtra(Intent.EXTRA_TEXT, msg);
                 it.setType("message/rfc822");
                 startActivity(it);

@@ -73,7 +73,7 @@ public class ActivityPrincipal extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.gerar_lista_principal) {
-            Intent intent = new Intent(this, ActivityEscolherTags.class);
+            Intent intent = new Intent(this, ActivityInfoUsuario.class);
             startActivity(intent);
         } else if (id == R.id.lista_principal) {
             Intent intent = new Intent(this, ActivityListaProjetoCompleta.class);

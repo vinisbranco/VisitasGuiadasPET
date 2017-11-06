@@ -5,15 +5,15 @@
         <item
             android:id="@+id/gerar_lista_principal"
             android:icon="@drawable/ic_gerar_lista_menu_principal"
-            android:title="Gerar Lista" />
+            android:title="@string/txt_marcar_visita" />
         <item
             android:id="@+id/lista_principal"
             android:icon="@drawable/ic_lista"
-            android:title="Lista de projetos" />
+            android:title="@string/txt_lista_projetos" />
         <item
             android:id="@+id/localizacao"
             android:icon="@drawable/ic_localizacao"
-            android:title="Localização" />
+            android:title="@string/txt_localizacao" />
     </group>
 
 </menu>
