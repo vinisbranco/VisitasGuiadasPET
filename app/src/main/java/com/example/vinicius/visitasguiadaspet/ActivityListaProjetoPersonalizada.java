@@ -1,58 +1,33 @@
 package com.example.vinicius.visitasguiadaspet;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.vinicius.visitasguiadaspet.Database.Banco;
-import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Locais;
-import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioLocais;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
 
 public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
 
     final ArrayList<Projeto> projetos = new ArrayList<>();
+    String emails = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_conteudo);
-        /*
-            Banco bd = new Banco(this);
-            SQLiteDatabase conn = bd.getWritableDatabase();
-            RepositorioLocais repositorioLocais = new RepositorioLocais(conn);
 
-            TextView tv = (TextView) findViewById(R.id.teste);
-            HashMap<Integer, Locais> listaHash = repositorioLocais.buscaLocais();
-            Collection<Locais> locais = listaHash.values();
-            String locais2 = locais.toString();
-            tv.setText(locais2);
-        */
+
         ListView lista = (ListView) findViewById(R.id.lista);
         ArrayList<Projeto> aux = listaDeProjetos();
         for(int i=0; i<aux.size(); i++){
             String[] tagsElementos = aux.get(i).getTags().split(",");
-            String tagsIntent = getIntent().getStringExtra("tags");
+            String tagsIntent = getIntent().getExtras().getString("tags");
             for(int j=0; j<tagsElementos.length; j++){
                 if(tagsIntent.contains(tagsElementos[j])){
                     projetos.add(aux.get(i));
@@ -62,9 +37,10 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
         }
         for(int j=0; j<projetos.size(); j++){
             int len = Integer.valueOf(projetos.get(j).getSala());
-            for(int k=0; k<projetos.size(); k++){
+            emails = emails +","+ projetos.get(j).getEmail();
+            for(int k=0; k<j; k++){
                 int len2 = Integer.valueOf(projetos.get(k).getSala());
-                if(len2>len){
+                if(len2<len){
                     Projeto aux2 = projetos.get(j);
                     projetos.set(j, projetos.get(k));
                     projetos.set(k, aux2);
@@ -136,14 +112,15 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
             case R.id.btn_menu_confirmar:
                 //Gerar a Mensagem automática com base nas informações adquiridas até aqui;
                 Intent it = new Intent(Intent.ACTION_SEND);
-                it.setData(Uri.parse("mailto:"));
-                String[] to = {"vinicius_ct@outlook.com.br"};
+                String[] to = emails.split(",");
                 it.putExtra(Intent.EXTRA_EMAIL, to);
                 it.putExtra(Intent.EXTRA_SUBJECT, "Nova visita agendada");
-
+                //Primeira mensagem
+                String msg = "Visita agendada:";
+                //Tags
                 String[] aux = getIntent().getExtras().get("tags").toString().split(",");
                 String tags = "";
-                for (int i=2; i<aux.length-1; i++){
+                for (int i=1; i<aux.length-1; i++){
                     if(i==1){
                         tags = aux[i];
                     }else{
@@ -151,9 +128,11 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
                     }
                 }
                 tags = tags + ".";
-
-                int hora = Integer.getInteger(getIntent().getExtras().get("horario").toString().split(":")[0]);
-                int min = Integer.getInteger(getIntent().getExtras().get("horario").toString().split(":")[1]);
+                //FIM
+                //Soma do tempo de cada visita
+                String[] horario = getIntent().getExtras().getString("horario").split(":");
+                int hora = Integer.parseInt(horario[0]);
+                int min = Integer.parseInt(horario[1]);
 
 
                 String projeto = "";
@@ -164,20 +143,23 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
                     projeto = projeto + "\n"+(i+1)+"ª Projeto: "+nome
                             + "\nSala: "+sala+"\n"
                             + "Horário: "+hora+":"+min;
-                    min = min + 15;
+                    min = min + 20;
                     if(min>=60){
                         hora++;
                         min = min - 60;
                     }
                     projeto = projeto + " - "+hora+":"+min+"\n";
                 }
+                //FIM
 
-
-                String msg ="->Informações:\n"
+                msg = msg +"\n\n->Informações:\n"
                         + "-Visitante:\n\n"
-                        + getIntent().getExtras().get("info_usuario")+"\n\n"
+                        + getIntent().getExtras().get("info_usuario")
+                        +"\nInteresses: "+tags+"\n\n"
                         + projeto;
+
                 it.putExtra(Intent.EXTRA_TEXT, msg);
+                it.setData(Uri.parse("mailto:"));
                 it.setType("message/rfc822");
                 startActivity(it);
                 break;

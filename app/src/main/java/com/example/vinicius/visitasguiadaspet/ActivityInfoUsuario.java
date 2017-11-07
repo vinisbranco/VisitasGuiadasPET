@@ -3,6 +3,7 @@ package com.example.vinicius.visitasguiadaspet;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,18 +31,19 @@ public class ActivityInfoUsuario extends AppCompatActivity {
         edt_nome.setText("Vinicius C. Teixeira");
         edt_data.setText(getData(false));
         edt_horario.setText(getData(true));
-        edt_empresa.setText("PUCRS");
+        edt_empresa.setText("Estudante");
 
         btn_confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent it = new Intent(ActivityInfoUsuario.this, ActivityEscolherTags.class);
+                String horario = edt_horario.getText().toString();
                 String info = "Nome: "+edt_nome.getText()
                                 +"\nData: "+edt_data.getText()
-                                +"\nHorário: "+edt_horario.getText()
-                                +"\nEmpresa: "+edt_empresa.getText();
+                                +"\nHorário: "+ horario
+                                +"\nCargo: "+edt_empresa.getText();
                 it.putExtra("info_usuario", info);
-                it.putExtra("horario", edt_horario.getText());
+                it.putExtra("horario", horario);
                 startActivity(it);
             }
         });

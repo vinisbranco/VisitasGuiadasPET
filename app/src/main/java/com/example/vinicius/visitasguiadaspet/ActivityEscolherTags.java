@@ -65,6 +65,7 @@ public class ActivityEscolherTags extends AppCompatActivity{
 
                 intent.putExtra("tags", tags);
                 intent.putExtra("info_usuario",getIntent().getExtras().getString("info_usuario"));
+                intent.putExtra("horario", getIntent().getExtras().getString("horario"));
                 startActivity(intent);
             }
         });
