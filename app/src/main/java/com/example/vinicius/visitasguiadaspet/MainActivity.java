@@ -19,7 +19,9 @@ import com.example.vinicius.visitasguiadaspet.Dominio.Entidades.Tags;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioHorarios;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioLocais;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioTags;
-import com.google.firebase.database.FirebaseDatabase;
+
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase conn2;
     private SQLiteDatabase conn3;
     private ListView lstLocais;
-    private ArrayAdapter<Locais> adpLocais;
-    private ArrayAdapter<Horarios> adpHorarios;
-    private ArrayAdapter<Tags> adpTags;
+    private HashMap<Integer,Locais> adpLocais;
+    private HashMap<Integer,Horarios> adpHorarios;
+    private HashMap<Integer,Tags> adpTags;
     private RepositorioLocais repositorioLocais;
     private RepositorioHorarios repositorioHorarios;
     private RepositorioTags repositorioTags;
@@ -86,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    public void getConteudo(View v){
+    /*public void getConteudo(View v){
         Intent intent = new Intent(MainActivity.this, ActivityConteudo.class);
         startActivity(intent);
-    }
+    }*/
 
     private  void inserir(){
 
