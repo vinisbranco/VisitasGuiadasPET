@@ -5,8 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.sql.Time;
@@ -21,12 +27,32 @@ public class ActivityInfoUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_usuario);
 
+        final TableRow escola = (TableRow) findViewById(R.id.row_escola);
+        final TableRow aluno = (TableRow) findViewById(R.id.row_aluno);
+
+        RadioButton individual = (RadioButton) findViewById(R.id.individual);
+        individual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                aluno.setVisibility(View.INVISIBLE);
+                escola.setVisibility(View.INVISIBLE);
+            }
+        });
+        RadioButton grupo = (RadioButton) findViewById(R.id.grupo);
+        grupo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                aluno.setVisibility(View.VISIBLE);
+                escola.setVisibility(View.VISIBLE);
+            }
+        });
+
         Button btn_confirmar = (Button) findViewById(R.id.btn_confirmar_info);
         Button btn_voltar = (Button) findViewById(R.id.btn_back);
         final EditText edt_nome = (EditText) findViewById(R.id.edt_nome);
         final EditText edt_data = (EditText) findViewById(R.id.edt_data);
         final EditText edt_horario = (EditText) findViewById(R.id.edt_horario);
-        final EditText edt_cargo = (EditText) findViewById(R.id.edt_empresa);
+        final EditText edt_cargo = (EditText) findViewById(R.id.edt_cargo);
 
         edt_nome.setText("Vinicius C. Teixeira");
         edt_data.setText(getData(false));
@@ -66,4 +92,7 @@ public class ActivityInfoUsuario extends AppCompatActivity {
         if(hora) return data_hora[1];
         else return data_hora[0];
     }
+
+
+
 }

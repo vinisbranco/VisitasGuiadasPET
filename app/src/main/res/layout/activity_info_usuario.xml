@@ -1,114 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        android:id="@+id/scrollView2">
+        android:layout_height="wrap_content">
 
-        <TableLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="1"
-            >
+            android:layout_height="match_parent">
 
-            <TableRow android:padding="3dp">
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/escolher">
 
-                <TextView
-                    android:id="@+id/txt_nome"
+                <RadioButton
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Nome:"
-                    android:textColor="#333"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content"
+                    android:id="@+id/individual"
+                    android:text="Individual"
+                    android:layout_margin="10dp"
+                    android:checked="true"/>
 
-                <EditText
-                    android:id="@+id/edt_nome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </TableRow>
-
-            <TableRow android:padding="3dp">
-
-                <TextView
-                    android:id="@+id/txt_data"
+                <RadioButton
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Data:"
-                    android:textColor="#333"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:layout_height="wrap_content"
+                    android:id="@+id/grupo"
+                    android:text="Grupo"
+                    android:layout_margin="10dp"/>
+            </RadioGroup>
 
-                <EditText
-                    android:id="@+id/edt_data"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                android:id="@+id/layoutInd"
+                android:layout_below="@+id/escolher">
 
-            </TableRow>
+                <TableRow android:padding="3dp">
 
-            <TableRow android:padding="3dp">
+                    <TextView
+                        android:id="@+id/txt_nome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Nome:"
+                        android:textColor="#333"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txt_horario"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Horário: "
-                    android:textColor="#333"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <EditText
+                        android:id="@+id/edt_nome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"/>
 
-                <EditText
-                    android:id="@+id/edt_horario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                </TableRow>
 
-            </TableRow>
+                <TableRow android:padding="3dp">
 
-            <TableRow android:padding="3dp">
+                    <TextView
+                        android:id="@+id/txt_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Data:"
+                        android:textColor="#333"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txt_cargo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Cargo:"
-                    android:textColor="#333"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <EditText
+                        android:id="@+id/edt_data"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"/>
 
-                <EditText
-                    android:id="@+id/edt_empresa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                </TableRow>
 
-            </TableRow>
+                <TableRow android:padding="3dp">
 
-            <TableRow android:padding="3dp">
+                    <TextView
+                        android:id="@+id/txt_horario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Horário: "
+                        android:textColor="#333"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_horario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"/>
+
+                </TableRow>
+
+                <TableRow android:padding="3dp">
+
+                    <TextView
+                        android:id="@+id/txt_cargo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Cargo:"
+                        android:textColor="#333"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_cargo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:padding="3dp"
+                    android:id="@+id/row_escola"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/txt_escola"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Escola:"
+                        android:textColor="#333"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_escola"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:padding="3dp"
+                    android:id="@+id/row_aluno"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/txt_qnt_aluno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Alunos:"
+                        android:textColor="#333"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edt_qnt_aluno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"/>
+
+                </TableRow>
+
+            </TableLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutInd"
+                android:layout_marginTop="15dp">
+
                 <Button
                     android:id="@+id/btn_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/btn_voltar"/>
+                    android:text="@string/btn_voltar"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="30dp"/>
 
                 <Button
                     android:id="@+id/btn_confirmar_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="right"
                     android:text="@string/btn_gerar_roteiro"
-                    android:layout_gravity="right"/>
-            </TableRow>
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="30dp"/>
 
-        </TableLayout>
+            </RelativeLayout>
+        </RelativeLayout>
     </ScrollView>
 
 
-
-</RelativeLayout>
+</LinearLayout>
