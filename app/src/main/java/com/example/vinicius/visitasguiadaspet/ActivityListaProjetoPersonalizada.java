@@ -140,7 +140,7 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
 
                     String nome = projetos.get(i).getNome();
                     String sala = projetos.get(i).getSala();
-                    projeto = projeto + "\n"+(i+1)+"ª Projeto: "+nome
+                    projeto = projeto + "\n"+(i+1)+"ª Local: "+nome
                             + "\nSala: "+sala+"\n"
                             + "Horário: "+hora+":"+min;
                     min = min + 20;
@@ -148,7 +148,15 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
                         hora++;
                         min = min - 60;
                     }
-                    projeto = projeto + " - "+hora+":"+min+"\n";
+                    if(min<10&&hora<10){
+                        projeto = projeto + " - 0"+hora+":0"+min+"\n";
+                    }else if(hora<10){
+                        projeto = projeto + " - 0"+hora+":"+min+"\n";
+                    }else if(min<10){
+                        projeto = projeto + " - "+hora+":0"+min+"\n";
+                    }else{
+                        projeto = projeto + " - "+hora+":"+min+"\n";
+                    }
                 }
                 //FIM
 

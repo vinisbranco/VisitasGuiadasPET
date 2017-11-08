@@ -26,12 +26,12 @@ public class ActivityInfoUsuario extends AppCompatActivity {
         final EditText edt_nome = (EditText) findViewById(R.id.edt_nome);
         final EditText edt_data = (EditText) findViewById(R.id.edt_data);
         final EditText edt_horario = (EditText) findViewById(R.id.edt_horario);
-        final EditText edt_empresa = (EditText) findViewById(R.id.edt_empresa);
+        final EditText edt_cargo = (EditText) findViewById(R.id.edt_empresa);
 
         edt_nome.setText("Vinicius C. Teixeira");
         edt_data.setText(getData(false));
         edt_horario.setText(getData(true));
-        edt_empresa.setText("Estudante");
+        edt_cargo.setText("Estudante");
 
         btn_confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +41,7 @@ public class ActivityInfoUsuario extends AppCompatActivity {
                 String info = "Nome: "+edt_nome.getText()
                                 +"\nData: "+edt_data.getText()
                                 +"\nHorário: "+ horario
-                                +"\nCargo: "+edt_empresa.getText();
+                                +"\nCargo: "+edt_cargo.getText();
                 it.putExtra("info_usuario", info);
                 it.putExtra("horario", horario);
                 startActivity(it);

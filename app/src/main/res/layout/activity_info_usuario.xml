@@ -75,11 +75,11 @@
             <TableRow android:padding="3dp">
 
                 <TextView
-                    android:id="@+id/txt_empresa"
+                    android:id="@+id/txt_cargo"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="Empresa:"
+                    android:text="Cargo:"
                     android:textColor="#333"
                     android:textSize="20dp"
                     android:textStyle="bold" />

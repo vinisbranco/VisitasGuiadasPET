@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.vinicius.visitasguiadaspet.Database.Banco;
 import com.example.vinicius.visitasguiadaspet.Database.Banco2;
@@ -20,6 +21,10 @@ import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioHorarios;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioLocais;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioTags;
 
+import org.w3c.dom.Text;
+
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     private Banco banco;
@@ -29,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase conn2;
     private SQLiteDatabase conn3;
     private ListView lstLocais;
-    private ArrayAdapter<Locais> adpLocais;
-    private ArrayAdapter<Horarios> adpHorarios;
-    private ArrayAdapter<Tags> adpTags;
+    private HashMap<Integer, Locais> adpLocais;
+    private HashMap<Integer, Horarios> adpHorarios;
+    private HashMap<Integer, Tags> adpTags;
     private RepositorioLocais repositorioLocais;
     private RepositorioHorarios repositorioHorarios;
     private RepositorioTags repositorioTags;
@@ -56,24 +61,21 @@ public class MainActivity extends AppCompatActivity {
         try {
 
             banco = new Banco(this);
-            banco2 = new Banco2(this);
-            banco3 = new Banco3(this);
             conn = banco.getWritableDatabase();
-            conn2 = banco2.getWritableDatabase();
-            conn3 = banco3.getWritableDatabase();
 
             repositorioLocais = new RepositorioLocais(conn);
-            repositorioHorarios = new RepositorioHorarios(conn2);
-            repositorioTags = new RepositorioTags(conn3);/*
-            adpLocais = repositorioLocais.buscaLocais(this);
-            adpHorarios = repositorioHorarios.buscaHorarios(this);
-            adpTags = repositorioTags.buscaTags(this);*/
+            adpLocais = repositorioLocais.buscaLocais();
 
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
             dlg.setMessage("Conexão criada com sucesso! ");
             dlg.setNeutralButton("OK", null);
             dlg.show();
             inserir();
+
+            String nome = adpLocais.get(0).getNome();
+            TextView t = (TextView) findViewById(R.id.teste);
+            t.setText(nome);
+
 
 
         }catch(SQLException ex){
