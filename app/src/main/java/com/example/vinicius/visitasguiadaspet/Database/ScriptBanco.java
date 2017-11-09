@@ -12,7 +12,6 @@ public class ScriptBanco {
         sqlBuilder.setLength(500);
         sqlBuilder.append("CREATE TABLE LOCAIS ( ");
         sqlBuilder.append("id         NUMBER (5)      PRIMARY KEY ");
-        sqlBuilder.append("UNIQUE ");
         sqlBuilder.append("NOT NULL, ");
         sqlBuilder.append("nSala      VARCHAR (10)  NOT NULL, ");
         sqlBuilder.append("nome       VARCHAR (50)  NOT NULL, ");

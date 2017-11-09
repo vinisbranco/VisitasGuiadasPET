@@ -22,7 +22,6 @@ import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioLocais;
 import com.example.vinicius.visitasguiadaspet.Dominio.RepositorioTags;
 
 import org.w3c.dom.Text;
-
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             conn = banco.getWritableDatabase();
 
             repositorioLocais = new RepositorioLocais(conn);
-            adpLocais = repositorioLocais.buscaLocais();
+            //adpLocais = repositorioLocais.buscaLocais();
 
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
             dlg.setMessage("Conexão criada com sucesso! ");
@@ -72,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
             dlg.show();
             inserir();
 
-            String nome = adpLocais.get(0).getNome();
+            /*String nome = adpLocais.get(0).getNome();
             TextView t = (TextView) findViewById(R.id.teste);
-            t.setText(nome);
+            t.setText(nome);*/
 
 
 
@@ -87,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    public void getConteudo(View v){
+    /*public void getConteudo(View v){
         Intent intent = new Intent(MainActivity.this, ActivityConteudo.class);
         startActivity(intent);
-    }
+    }*/
 
     private  void inserir(){
 
@@ -208,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
             horarios3 = new Horarios(33, "Quarta", null, null, "14:00:00", "17:30:00", locais);
             horarios4 = new Horarios(34, "Quinta", null, null, "14:00:00", "17:30:00", locais);
             horarios5 = new Horarios(35, "Sexta", null, null, "14:00:00", "17:30:00", locais);
-            tags = new Tags(11, "Inteligência Artificial", locais);
+            tags = new Tags(20, "Inteligência Artificial", locais);
 
             repositorioLocais.inserir(locais);
             repositorioHorarios.inserir(horarios);

@@ -34,7 +34,7 @@ public class RepositorioLocais {
         values.put("nome", locais.getNome());
         values.put("numContato", locais.getNumContato());
         values.put("email", locais.getEmail());
-        values.put("tempVisit", locais.getTempVisit());
+        values.put("tempVist", locais.getTempVisit());
         values.put("descricao", locais.getDescricao());
 
         conn.insertOrThrow("LOCAIS", null, values);

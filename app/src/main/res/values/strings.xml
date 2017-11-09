@@ -56,4 +56,10 @@
         destinados a estudantes da FACIN, porém toda a comunidade é bem vinda. As palestras
         têm duração de 30 minutos cada e ocorrem uma vez por semana, nos auditórios do prédio 32.
         Para ter mais informações a respeito das próximas palestras, consulte a nossa agenda.</string>
+    <string name="txt_exemplo_descricao">Descrição: O PET (Programa de Educação Tutorial)
+        é um programa realizado pelo MEC que consiste em três pilares principais:
+        ensino, extensão e pesquisa e desenvolvimento. O grupo é formado por 12 bolsistas
+        que atuam nas três áreas, realizando tarefas como organização de palestras,
+        desenvolvimento de artigos e minicursos e auxiliam em projetos de extensão.</string>
+    <string name="facebook_app_id">130969367622763</string>
 </resources>
