@@ -3,19 +3,11 @@ package com.example.vinicius.visitasguiadaspet;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
-
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -53,11 +45,14 @@ public class ActivityInfoUsuario extends AppCompatActivity {
         final EditText edt_data = (EditText) findViewById(R.id.edt_data);
         final EditText edt_horario = (EditText) findViewById(R.id.edt_horario);
         final EditText edt_cargo = (EditText) findViewById(R.id.edt_cargo);
+        final EditText edt_escola = (EditText) findViewById(R.id.edt_escola);
+        final EditText edt_qnt_alunos = (EditText) findViewById(R.id.edt_qnt_aluno);
 
         edt_nome.setText("Vinicius C. Teixeira");
         edt_data.setText(getData(false));
         edt_horario.setText(getData(true));
         edt_cargo.setText("Estudante");
+
 
         btn_confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +63,15 @@ public class ActivityInfoUsuario extends AppCompatActivity {
                                 +"\nData: "+edt_data.getText()
                                 +"\nHorário: "+ horario
                                 +"\nCargo: "+edt_cargo.getText();
+                if(!edt_escola.getText().toString().equals("")){
+                    info = info +"\nEscola: "+edt_escola.getText().toString();
+                }
+                if(!edt_qnt_alunos.getText().toString().equals("")){
+                    info = info + "\nQª. alunos: "+edt_qnt_alunos.getText();
+                }
                 it.putExtra("info_usuario", info);
                 it.putExtra("horario", horario);
+
                 startActivity(it);
             }
         });

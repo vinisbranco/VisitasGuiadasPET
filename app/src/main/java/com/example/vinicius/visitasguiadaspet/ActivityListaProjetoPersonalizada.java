@@ -51,6 +51,7 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
         lista.setAdapter(adapter);
 
 
+
     }
 
     private ArrayList<Projeto> listaDeProjetos(){
@@ -120,7 +121,7 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
                 //Tags
                 String[] aux = getIntent().getExtras().get("tags").toString().split(",");
                 String tags = "";
-                for (int i=1; i<aux.length-1; i++){
+                for (int i=0; i<aux.length; i++){
                     if(i==1){
                         tags = aux[i];
                     }else{
