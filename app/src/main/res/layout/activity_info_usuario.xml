@@ -80,7 +80,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:lines="1"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:inputType="date"/>
 
                 </TableRow>
 
@@ -94,7 +95,8 @@
                         android:text="Horário: "
                         android:textColor="#333"
                         android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:inputType="time"/>
 
                     <EditText
                         android:id="@+id/edt_horario"
@@ -166,7 +168,8 @@
                         android:text="Alunos:"
                         android:textColor="#333"
                         android:textSize="20dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:inputType="number"/>
 
                     <EditText
                         android:id="@+id/edt_qnt_aluno"
