@@ -1,6 +1,7 @@
 package com.example.vinicius.visitasguiadaspet;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,6 +30,7 @@ public class ActivityInfoUsuario extends AppCompatActivity {
         individual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 aluno.setVisibility(View.INVISIBLE);
                 escola.setVisibility(View.INVISIBLE);
             }
@@ -57,22 +62,33 @@ public class ActivityInfoUsuario extends AppCompatActivity {
         btn_confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(ActivityInfoUsuario.this, ActivityEscolherTags.class);
-                String horario = edt_horario.getText().toString();
-                String info = "Nome: "+edt_nome.getText()
-                                +"\nData: "+edt_data.getText()
-                                +"\nHorário: "+ horario
-                                +"\nCargo: "+edt_cargo.getText();
-                if(!edt_escola.getText().toString().equals("")){
-                    info = info +"\nEscola: "+edt_escola.getText().toString();
-                }
-                if(!edt_qnt_alunos.getText().toString().equals("")){
-                    info = info + "\nQª. alunos: "+edt_qnt_alunos.getText();
-                }
-                it.putExtra("info_usuario", info);
-                it.putExtra("horario", horario);
+                RadioButton grupo = (RadioButton) findViewById(R.id.grupo);
+                if(edt_data.getText().length() == 0
+                        || edt_horario.getText().length() == 0){
+                    new AlertDialog.Builder(ActivityInfoUsuario.this).setTitle("Campo vázio")
+                    .setMessage("Por favor, preencha os campo obrigátorios.").show();
 
-                startActivity(it);
+                }else if(edt_qnt_alunos.getText().length() == 0 && grupo.isChecked()){
+                    new AlertDialog.Builder(ActivityInfoUsuario.this).setTitle("Campo vázio")
+                            .setMessage("Por favor, preencha os campo obrigátorios.").show();
+                }else{
+                    Intent it = new Intent(ActivityInfoUsuario.this, ActivityEscolherTags.class);
+                    String horario = edt_horario.getText().toString();
+                    String info = "Nome: "+edt_nome.getText()
+                            +"\nData: "+edt_data.getText()
+                            +"\nHorário: "+ horario
+                            +"\nCargo: "+edt_cargo.getText();
+                    if(!edt_escola.getText().toString().equals("")){
+                        info = info +"\nEscola: "+edt_escola.getText().toString();
+                    }
+                    if(!edt_qnt_alunos.getText().toString().equals("")){
+                        info = info +"\nEscola: "+edt_qnt_alunos.getText().toString();
+                    }
+                    it.putExtra("info_usuario", info);
+                    it.putExtra("horario", horario);
+
+                    startActivity(it);
+                }
             }
         });
 

@@ -81,7 +81,7 @@
                         android:layout_marginRight="20dp"
                         android:lines="1"
                         android:maxLines="1"
-                        android:inputType="date"/>
+                        android:inputType="number"/>
 
                 </TableRow>
 
@@ -95,8 +95,7 @@
                         android:text="Horário: "
                         android:textColor="#333"
                         android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:inputType="time"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/edt_horario"
@@ -104,7 +103,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:lines="1"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:inputType="time"/>
 
                 </TableRow>
 
@@ -177,7 +177,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:lines="1"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:inputType="time" />
 
                 </TableRow>
 
