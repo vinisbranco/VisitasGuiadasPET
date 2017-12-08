@@ -1,7 +1,9 @@
 package com.example.vinicius.visitasguiadaspet;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,11 +12,19 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.vinicius.visitasguiadaspet.Dominio.BancoTeste;
+import com.example.vinicius.visitasguiadaspet.Dominio.LocaisTeste;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
 
-    final ArrayList<Projeto> projetos = new ArrayList<>();
+    List<JSONObject> lista_aux = new LinkedList<JSONObject>();
     String emails = "";
 
     @Override
@@ -22,81 +32,44 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_conteudo);
 
+        try{
+            SQLiteDatabase db = new BancoTeste(this).getDatabase();
+            BancoTeste criarBd = new BancoTeste(this);
+            criarBd.removerBanco(db);
+            criarBd.onCreate(db);
 
-        ListView lista = (ListView) findViewById(R.id.lista);
-        ArrayList<Projeto> aux = listaDeProjetos();
-        for(int i=0; i<aux.size(); i++){
-            String[] tagsElementos = aux.get(i).getTags().split(",");
-            String tagsIntent = getIntent().getExtras().getString("tags");
-            for(int j=0; j<tagsElementos.length; j++){
-                if(tagsIntent.contains(tagsElementos[j])){
-                    projetos.add(aux.get(i));
-                    break;
+            LocaisTeste source = new LocaisTeste(this);
+            ListView listaView = (ListView) findViewById(R.id.lista);
+
+            lista_aux = source.allLocais();
+            for(int i=0; i<lista_aux.size(); i++){
+                String tagsElementos = lista_aux.get(i).getString("tags");
+                String[] tagsIntent = getIntent().getExtras().getString("tags").split(",");
+                tagsIntent[0] = (tagsIntent[0].equals("")) ? "0":tagsIntent[0];
+                boolean naoPossui = true;
+                for(int j = 0; j<tagsIntent.length; j++){
+                    if(tagsElementos.contains(tagsIntent[j])){
+                        naoPossui = false;
+                        break;
+                    }
                 }
-            }
-        }
-        for(int j=0; j<projetos.size(); j++){
-            int len = Integer.valueOf(projetos.get(j).getSala());
-            emails = emails +","+ projetos.get(j).getEmail();
-            for(int k=0; k<j; k++){
-                int len2 = Integer.valueOf(projetos.get(k).getSala());
-                if(len2<len){
-                    Projeto aux2 = projetos.get(j);
-                    projetos.set(j, projetos.get(k));
-                    projetos.set(k, aux2);
+                if(naoPossui){
+                    lista_aux.remove(i);
+                    i--;
+                }else{
+                    emails = lista_aux.get(i).getString("email") + "," + emails;
                 }
+
             }
+
+
+            ArrayAdapter<JSONObject> adapter = new AdapterListaTeste(this, lista_aux);
+
+            listaView.setAdapter(adapter);
+
+        }catch(Throwable e){
+            new AlertDialog.Builder(this).setTitle("Erro").setMessage(e.toString()).show();
         }
-        ArrayAdapter adapter = new ListaAdapter(this, projetos);
-        lista.setAdapter(adapter);
-
-
-
-    }
-
-    private ArrayList<Projeto> listaDeProjetos(){
-        ArrayList<Projeto> projetos = new ArrayList<Projeto>();
-        Projeto projeto = new Projeto("PET","701","40028922","petinf@pucrs.br","14:00-17:30","Os estudantes são responsáveis pela organização de atividades de integração destinadas ao público interno da universidade: estudantes, professores e outros servidores."
-                ,R.mipmap.ic_pet, "Robótica,Virtualização");
-        projetos.add(projeto);
-        projeto = new Projeto("AGES","107","99998888","ages@pucrs.br","14:00-17:30","O objetivo do Curso de Bacharelado em Engenharia de Software é formar profissionais com sólida competência e conhecimento profundo de arquitetura de software, tecnologias e processos de desenvolvimento, de maneira a poder produzir software robusto e com qualidade, de maneira sistemática e eficiente, desde aplicativos simples até sistemas críticos de alta complexidade."
-                ,R.mipmap.ic_ages, "Computação Gráfica");
-        projetos.add(projeto);
-        projeto = new Projeto("CePES","106","77776666","cepes@pucrs.br","08:00-17:30","O Centro de Estudos Políticos e Sociais, fundado em outubro de 1992, constitui-se em uma associação de pessoas preocupadas em analisar as instituições e os vários aspectos da sociedade, na procura de soluções balizadas pelo liberalismo político."
-                ,R.mipmap.ic_cepes, "Virtualização");
-        projetos.add(projeto);
-        projeto = new Projeto("SMART","627","55554444","smart@pucrs.br","10:00-17:00","O grupo SMART produz pesquisa reconhecida internacionalmente na área de Inteligência Artificial, principalmente por sua atuação nas áreas de sistemas multiagentes e de ontologias para representação de conhecimento específico de domínios."
-                ,R.mipmap.ic_smart, "Sistemas Autônomos");
-        projetos.add(projeto);
-        projeto = new Projeto("DaVint","654","33332222","davint@pucrs.br","08:00-18:00","In 2011 professors Milene S. Silveira and Isabel H. Manssour began the first project of Social Networks data visualization. Professor Roberto Tietzmann joined the research team at the end of 2013. Initially the project was named as DaVis (Data Visualization) and over the years several undergraduate, masters and PhD students from both FAMECOS (School of Communications) and the FACIN (School of Computer Science), participated in the project. In 2017, with the increase of the team, and with the equipment acquired over the years, the DaVInt lab (Data Visualization and Interaction) was created. It is physically located in Room 654 of Building 32 of PUCRS. We now have 6 desktop computers, 1 notebook and 1 server, as well as tablets and cameras, and a multidisciplinary team formed by communication, administration, engineering and information technology students."
-                ,R.mipmap.ic_puc_logo, "Inteligência Artificial");
-        projetos.add(projeto);
-        projeto = new Projeto("GPIN","725","11110000","gpin@pucrs.br","08:00-17:30","Criado em 2003 e coordenado pelo Prof. Duncan Ruiz desde 10/2006, o Grupo de Pesquisa em Inteligência de Negócio, GPIN, busca pesquisar temas relacionados à Inteligência de Processos de Negócio, bem como disseminar os resultados de suas pesquisas através da formação na graduação e na pós-graduação.Entre os principais temas de pesquisa estão: sistemas de descoberta de conhecimento, mineração de dados, data warehousing, bancos de dados ativos e temporais e automação de processos de negócio.De modo interdisciplinar, o GPIN tem realizado parcerias com outros grupos e unidades de pesquisa vinculadas a PUCRS, entre estas, LABIO (Laboratório de Bioinformática, Modelagem e Simulação de Biossistemas), PLN (Processamento de Linguagem Natural), PEG (Performance Evaluation Group), PPGO (Programa de Pós-Graduação em Odontologia) e FAMECOS (Faculdade de Comunicação Social)."
-                ,R.mipmap.ic_gpin, "Sistemas Embarcados");
-        projetos.add(projeto);
-        projeto = new Projeto("LABIO","602","40028922","labio@pucrs.br","14:00-17:30","Os estudantes são responsáveis pela organização de atividades de integração destinadas ao público interno da universidade: estudantes, professores e outros servidores."
-                ,R.mipmap.ic_icon_default, "Robótica,Sistemas Autônomos");
-        projetos.add(projeto);
-        projeto = new Projeto("GRV","625","99998888","grv@pucrs.br","14:00-17:30","O objetivo do Curso de Bacharelado em Engenharia de Software é formar profissionais com sólida competência e conhecimento profundo de arquitetura de software, tecnologias e processos de desenvolvimento, de maneira a poder produzir software robusto e com qualidade, de maneira sistemática e eficiente, desde aplicativos simples até sistemas críticos de alta complexidade."
-                ,R.mipmap.ic_icon_default, "Computação Gráfica");
-        projetos.add(projeto);
-        projeto = new Projeto("INCER","629","77776666","incer@pucrs.br","08:00-17:30","O Centro de Estudos Políticos e Sociais, fundado em outubro de 1992, constitui-se em uma associação de pessoas preocupadas em analisar as instituições e os vários aspectos da sociedade, na procura de soluções balizadas pelo liberalismo político."
-                ,R.mipmap.ic_icon_default, "Virtualização");
-        projetos.add(projeto);
-        projeto = new Projeto("PLN","630","55554444","pln@pucrs.br","10:00-17:00","O grupo SMART produz pesquisa reconhecida internacionalmente na área de Inteligência Artificial, principalmente por sua atuação nas áreas de sistemas multiagentes e de ontologias para representação de conhecimento específico de domínios."
-                ,R.mipmap.ic_icon_default, "Sistemas Autônomos");
-        projetos.add(projeto);
-        projeto = new Projeto("LSHV","653","33332222","lshv@pucrs.br","08:00-18:00","In 2011 professors Milene S. Silveira and Isabel H. Manssour began the first project of Social Networks data visualization. Professor Roberto Tietzmann joined the research team at the end of 2013. Initially the project was named as DaVis (Data Visualization) and over the years several undergraduate, masters and PhD students from both FAMECOS (School of Communications) and the FACIN (School of Computer Science), participated in the project. In 2017, with the increase of the team, and with the equipment acquired over the years, the DaVInt lab (Data Visualization and Interaction) was created. It is physically located in Room 654 of Building 32 of PUCRS. We now have 6 desktop computers, 1 notebook and 1 server, as well as tablets and cameras, and a multidisciplinary team formed by communication, administration, engineering and information technology students."
-                ,R.mipmap.ic_icon_default, "Inteligência Artificial");
-        projetos.add(projeto);
-        projeto = new Projeto("GSE","721","11110000","gse@pucrs.br","08:00-17:30","Criado em 2003 e coordenado pelo Prof. Duncan Ruiz desde 10/2006, o Grupo de Pesquisa em Inteligência de Negócio, GPIN, busca pesquisar temas relacionados à Inteligência de Processos de Negócio, bem como disseminar os resultados de suas pesquisas através da formação na graduação e na pós-graduação.Entre os principais temas de pesquisa estão: sistemas de descoberta de conhecimento, mineração de dados, data warehousing, bancos de dados ativos e temporais e automação de processos de negócio.De modo interdisciplinar, o GPIN tem realizado parcerias com outros grupos e unidades de pesquisa vinculadas a PUCRS, entre estas, LABIO (Laboratório de Bioinformática, Modelagem e Simulação de Biossistemas), PLN (Processamento de Linguagem Natural), PEG (Performance Evaluation Group), PPGO (Programa de Pós-Graduação em Odontologia) e FAMECOS (Faculdade de Comunicação Social)."
-                ,R.mipmap.ic_icon_default, "Sistemas Embarcados");
-        projetos.add(projeto);
-        projeto = new Projeto("GAPH","726","11110000","gaph@pucrs.br","08:00-17:30","Criado em 2003 e coordenado pelo Prof. Duncan Ruiz desde 10/2006, o Grupo de Pesquisa em Inteligência de Negócio, GPIN, busca pesquisar temas relacionados à Inteligência de Processos de Negócio, bem como disseminar os resultados de suas pesquisas através da formação na graduação e na pós-graduação.Entre os principais temas de pesquisa estão: sistemas de descoberta de conhecimento, mineração de dados, data warehousing, bancos de dados ativos e temporais e automação de processos de negócio.De modo interdisciplinar, o GPIN tem realizado parcerias com outros grupos e unidades de pesquisa vinculadas a PUCRS, entre estas, LABIO (Laboratório de Bioinformática, Modelagem e Simulação de Biossistemas), PLN (Processamento de Linguagem Natural), PEG (Performance Evaluation Group), PPGO (Programa de Pós-Graduação em Odontologia) e FAMECOS (Faculdade de Comunicação Social)."
-                ,R.mipmap.ic_icon_default, "Sistemas Embarcados");
-        projetos.add(projeto);
-
-        return projetos;
     }
 
 
@@ -108,7 +81,7 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
             case R.id.btn_menu_confirmar:
                 //Gerar a Mensagem automática com base nas informações adquiridas até aqui;
@@ -137,32 +110,36 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
 
 
                 String projeto = "";
-                for(int i=0; i<projetos.size(); i++){
+                try {
+                    for (int i = 0; i < lista_aux.size(); i++) {
 
-                    String nome = projetos.get(i).getNome();
-                    String sala = projetos.get(i).getSala();
-                    projeto = projeto + "\n"+(i+1)+"ª Local: "+nome
-                            + "\nSala: "+sala+"\n"
-                            + "Horário: "+hora+":"+min;
-                    min = min + 20;
-                    if(min>=60){
-                        hora++;
-                        min = min - 60;
+                        String nome = lista_aux.get(i).getString("nome");
+                        String sala = lista_aux.get(i).getString("sala");
+                        projeto = projeto + "\n" + (i + 1) + "ª Local: " + nome
+                                + "\nSala: " + sala + "\n"
+                                + "Horário: " + hora + ":" + min;
+                        min = min + 20;
+                        if (min >= 60) {
+                            hora++;
+                            min = min - 60;
+                        }
+                        if (min < 10 && hora < 10) {
+                            projeto = projeto + " - 0" + hora + ":0" + min + "\n";
+                        } else if (hora < 10) {
+                            projeto = projeto + " - 0" + hora + ":" + min + "\n";
+                        } else if (min < 10) {
+                            projeto = projeto + " - " + hora + ":0" + min + "\n";
+                        } else {
+                            projeto = projeto + " - " + hora + ":" + min + "\n";
+                        }
                     }
-                    if(min<10&&hora<10){
-                        projeto = projeto + " - 0"+hora+":0"+min+"\n";
-                    }else if(hora<10){
-                        projeto = projeto + " - 0"+hora+":"+min+"\n";
-                    }else if(min<10){
-                        projeto = projeto + " - "+hora+":0"+min+"\n";
-                    }else{
-                        projeto = projeto + " - "+hora+":"+min+"\n";
-                    }
+                }catch(Throwable e){
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 //FIM
 
-                msg = msg +"\n\n->Informações:\n"
-                        + "-Visitante:\n\n"
+                msg = msg +"\n\n->Informações:\n\n"
+                        + "-Visitante:\n"
                         + getIntent().getExtras().get("info_usuario")
                         +"\nInteresses: "+tags+"\n\n"
                         + projeto;

@@ -58,9 +58,35 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:lines="1"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:inputType="text"/>
 
                 </TableRow>
+
+                <TableRow android:padding="3dp">
+
+                    <TextView
+                        android:id="@+id/txt_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="E-mail:"
+                        android:textColor="#333"
+                        android:textSize="20dp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/edt_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:inputType="textEmailAddress"/>
+
+                </TableRow>
+
+
 
                 <TableRow android:padding="3dp">
 
@@ -81,7 +107,7 @@
                         android:layout_marginRight="20dp"
                         android:lines="1"
                         android:maxLines="1"
-                        android:inputType="number"/>
+                        android:inputType="date"/>
 
                 </TableRow>
 
@@ -126,7 +152,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:lines="1"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:inputType="text"/>
 
                 </TableRow>
 
@@ -151,7 +178,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:lines="1"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        android:inputType="text"/>
 
                 </TableRow>
 

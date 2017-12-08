@@ -3,11 +3,16 @@
     <!--Tags-->
     <string name="txt_tags">Escolha os assuntos que deseja conhecer:</string>
     <string name="txt_robotica">Robótica</string>
-    <string name="txt_sistemas_autonomos">Sistemas Autônomos</string>
+    <string name="txt_outros">Outros</string>
     <string name="txt_inteligencia_artificial">Inteligência Artificial</string>
-    <string name="txt_sistemas_embarcados">Sistemas Embarcados</string>
+    <string name="txt_eng_soft">Engenharia de Software</string>
     <string name="txt_computacao_grafica">Computação Gráfica</string>
     <string name="txt_virtualizacao">Virtualização</string>
+    <string name="txt_iot">Internet das Coisas</string>
+    <string name="txt_proc_dados">Processamento de dados</string>
+    <string name="txt_medicina">Medicina</string>
+    <string name="txt_saude">Saúde</string>
+    <string name="txt_hardware">Hardware</string>
     <string name="btn_gerar_roteiro">Gerar Roteiro</string>
     <string name="btn_voltar">Voltar</string>
     <!--FIM-->

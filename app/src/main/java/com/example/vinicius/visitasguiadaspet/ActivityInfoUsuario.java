@@ -47,6 +47,7 @@ public class ActivityInfoUsuario extends AppCompatActivity {
         Button btn_confirmar = (Button) findViewById(R.id.btn_confirmar_info);
         Button btn_voltar = (Button) findViewById(R.id.btn_back);
         final EditText edt_nome = (EditText) findViewById(R.id.edt_nome);
+        final EditText edt_email = (EditText) findViewById(R.id.edt_email);
         final EditText edt_data = (EditText) findViewById(R.id.edt_data);
         final EditText edt_horario = (EditText) findViewById(R.id.edt_horario);
         final EditText edt_cargo = (EditText) findViewById(R.id.edt_cargo);
@@ -54,6 +55,7 @@ public class ActivityInfoUsuario extends AppCompatActivity {
         final EditText edt_qnt_alunos = (EditText) findViewById(R.id.edt_qnt_aluno);
 
         edt_nome.setText("Vinicius C. Teixeira");
+        edt_email.setText("vinicius@pucrs.br");
         edt_data.setText(getData(false));
         edt_horario.setText(getData(true));
         edt_cargo.setText("Estudante");
@@ -64,9 +66,10 @@ public class ActivityInfoUsuario extends AppCompatActivity {
             public void onClick(View view) {
                 RadioButton grupo = (RadioButton) findViewById(R.id.grupo);
                 if(edt_data.getText().length() == 0
-                        || edt_horario.getText().length() == 0){
+                        || edt_horario.getText().length() == 0
+                        || edt_email.getText().length() == 0){
                     new AlertDialog.Builder(ActivityInfoUsuario.this).setTitle("Campo vázio")
-                    .setMessage("Por favor, preencha os campo obrigátorios.").show();
+                    .setMessage("Por favor, preencha os campo Data, Horário e E-mail.").show();
 
                 }else if(edt_qnt_alunos.getText().length() == 0 && grupo.isChecked()){
                     new AlertDialog.Builder(ActivityInfoUsuario.this).setTitle("Campo vázio")
@@ -75,6 +78,7 @@ public class ActivityInfoUsuario extends AppCompatActivity {
                     Intent it = new Intent(ActivityInfoUsuario.this, ActivityEscolherTags.class);
                     String horario = edt_horario.getText().toString();
                     String info = "Nome: "+edt_nome.getText()
+                            +"\nE-mail: "+edt_email.getText()
                             +"\nData: "+edt_data.getText()
                             +"\nHorário: "+ horario
                             +"\nCargo: "+edt_cargo.getText();
@@ -82,7 +86,7 @@ public class ActivityInfoUsuario extends AppCompatActivity {
                         info = info +"\nEscola: "+edt_escola.getText().toString();
                     }
                     if(!edt_qnt_alunos.getText().toString().equals("")){
-                        info = info +"\nEscola: "+edt_qnt_alunos.getText().toString();
+                        info = info +"\nAlunos: "+edt_qnt_alunos.getText().toString();
                     }
                     it.putExtra("info_usuario", info);
                     it.putExtra("horario", horario);

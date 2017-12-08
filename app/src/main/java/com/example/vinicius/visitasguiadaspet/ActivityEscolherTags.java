@@ -10,9 +10,8 @@ import android.widget.TextView;
 
 public class ActivityEscolherTags extends AppCompatActivity{
 
-    CheckBox robotica,compGrafica, virtualizacao, sisAutonomos, sisEmbarcados, intArtificial;
+    CheckBox robotica,procDados,hardware,iot,saude,compGrafica, virtualizacao, outros, engDeSoft, intArtificial;
     Button btnVoltar,btnGerarLista;
-    TextView txtResultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +36,15 @@ public class ActivityEscolherTags extends AppCompatActivity{
                 String tags = "";
 
                 robotica = (CheckBox) findViewById(R.id.item1);
-                compGrafica = (CheckBox) findViewById(R.id.item2);
-                virtualizacao = (CheckBox) findViewById(R.id.item3);
-                sisAutonomos = (CheckBox) findViewById(R.id.item4);
-                sisEmbarcados = (CheckBox) findViewById(R.id.item5);
-                intArtificial = (CheckBox) findViewById(R.id.item6);
+                iot = (CheckBox) findViewById(R.id.item2);
+                compGrafica = (CheckBox) findViewById(R.id.item3);
+                intArtificial = (CheckBox) findViewById(R.id.item4);
+                engDeSoft = (CheckBox) findViewById(R.id.item5);
+                virtualizacao = (CheckBox) findViewById(R.id.item6);
+                hardware = (CheckBox) findViewById(R.id.item7);
+                procDados = (CheckBox) findViewById(R.id.item8);
+                saude = (CheckBox) findViewById(R.id.item9);
+                outros = (CheckBox) findViewById(R.id.item10);
 
                 if(robotica.isChecked()){
                     tags = tags + "," + robotica.getText();
@@ -52,16 +55,27 @@ public class ActivityEscolherTags extends AppCompatActivity{
                 if(virtualizacao.isChecked()){
                     tags = tags + "," + virtualizacao.getText();
                 }
-                if(sisAutonomos.isChecked()){
-                    tags = tags + "," + sisAutonomos.getText();
-                }
-                if(sisEmbarcados.isChecked()){
-                    tags = tags + "," + sisEmbarcados.getText();
+                if(engDeSoft.isChecked()){
+                    tags = tags + "," + engDeSoft.getText();
                 }
                 if(intArtificial.isChecked()){
                     tags = tags + "," + intArtificial.getText();
                 }
-                tags = tags + ",";
+                if(outros.isChecked()){
+                    tags = tags + "," + outros.getText();
+                }
+                if(procDados.isChecked()){
+                    tags = tags + "," + procDados.getText();
+                }
+                if(iot.isChecked()){
+                    tags = tags + "," + iot.getText();
+                }
+                if(saude.isChecked()){
+                    tags = tags + "," + saude.getText();
+                }
+                if(hardware.isChecked()){
+                    tags = tags + "," + hardware.getText();
+                }
 
                 intent.putExtra("tags", tags);
                 intent.putExtra("info_usuario",getIntent().getExtras().getString("info_usuario"));
