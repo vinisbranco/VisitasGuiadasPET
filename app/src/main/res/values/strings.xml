@@ -20,7 +20,7 @@
     <string name="txt_subtitulo">Visitas guiadas da PUCRS</string>
     <string name="txt_marcar_visita">Marcar visita</string>
     <string name="txt_lista_projetos">Lista de projetos</string>
-    <string name="txt_localizacao">Localização</string>
+    <string name="txt_edt_info">Editar Informações</string>
     <!--FIM-->
     <string name="title_activity_principal">PrincipalActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

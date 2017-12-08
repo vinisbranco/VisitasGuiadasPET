@@ -11,9 +11,9 @@
             android:icon="@drawable/ic_lista"
             android:title="@string/txt_lista_projetos" />
         <item
-            android:id="@+id/localizacao"
-            android:icon="@drawable/ic_localizacao"
-            android:title="@string/txt_localizacao" />
+            android:id="@+id/editar_informacoes"
+            android:icon="@drawable/ic_editar_informacao_24dp"
+            android:title="@string/txt_edt_info" />
     </group>
 
 </menu>

@@ -78,6 +78,8 @@ public class ActivityPrincipal extends AppCompatActivity
         } else if (id == R.id.lista_principal) {
             Intent intent = new Intent(this, ActivityListaProjetoCompleta.class);
             startActivity(intent);
+        } else if(id == R.id.editar_informacoes){
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
