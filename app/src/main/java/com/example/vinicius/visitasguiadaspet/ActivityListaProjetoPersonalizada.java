@@ -62,7 +62,6 @@ public class ActivityListaProjetoPersonalizada extends AppCompatActivity {
 
             }
 
-
             ArrayAdapter<JSONObject> adapter = new AdapterListaTeste(this, lista_aux);
 
             listaView.setAdapter(adapter);

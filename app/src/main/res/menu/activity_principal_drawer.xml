@@ -12,8 +12,8 @@
             android:title="@string/txt_lista_projetos" />
         <item
             android:id="@+id/editar_informacoes"
-            android:icon="@drawable/ic_editar_informacao_24dp"
-            android:title="@string/txt_edt_info" />
+            android:icon="@drawable/ic_edit_info"
+            android:title="@string/txt_edit_info" />
     </group>
 
 </menu>

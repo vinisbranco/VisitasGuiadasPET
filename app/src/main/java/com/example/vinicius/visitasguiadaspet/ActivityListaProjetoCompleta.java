@@ -33,6 +33,7 @@ public class ActivityListaProjetoCompleta extends AppCompatActivity {
         LocaisTeste locais = new LocaisTeste(this);
 
         List<JSONObject> lista_locais = locais.allLocais();
+        lista_locais.remove(0);
 
         ArrayAdapter adapter = new AdapterListaTeste(this, lista_locais);
 

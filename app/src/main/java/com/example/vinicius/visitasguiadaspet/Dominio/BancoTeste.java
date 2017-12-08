@@ -49,6 +49,13 @@ public class BancoTeste extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
+        values.put("nome","");
+        values.put("sala", 0);
+        values.put("email", "");
+        values.put("tags", "");
+        values.put("tempo_visita", 0);
+        db.insert("LOCAIS", null, values);
+
         values.put("nome","PET");
         values.put("sala",701);
         values.put("email", "pet@pucrs.br");

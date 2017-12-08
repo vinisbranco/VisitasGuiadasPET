@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ActivityEscolherTags" />
         <activity android:name=".ActivityListaProjetoPersonalizada" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".ActivityPrincipal"
             android:label="@string/title_activity_principal"
@@ -30,8 +30,8 @@
         <activity android:name=".ActivityListaProjetoCompleta" />
         <activity android:name=".ActivityInfoUsuario" />
         <!-- <activity android:name="com.example.vinicius.visitasguiadaspet.ActivityConteudo" /> -->
-        <activity android:name=".ActivityTeste">
-        </activity>
+        <activity android:name=".ActivityTeste"></activity>
+        <activity android:name=".ActivityEditInfoUsuario"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.example.vinicius.visitasguiadaspet;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.example.vinicius.visitasguiadaspet.Dominio.BancoTeste;
 
 public class ActivityPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,6 +36,15 @@ public class ActivityPrincipal extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        try{
+            SQLiteDatabase db = new BancoTeste(this).getDatabase();
+            BancoTeste source = new BancoTeste(this);
+            source.onUpgrade(db, 1, 1);
+        }catch(Throwable e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
